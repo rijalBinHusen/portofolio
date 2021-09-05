@@ -1,4 +1,5 @@
 <script setup>
+import Activity from './Activity.vue'
 // import { ref } from 'vue'
 
 // defineProps({
@@ -14,9 +15,9 @@
     <header class="max-h-full bg-opacity-50 bg-white p-6 grid">
       <!-- Navbar Menu -->
       <nav class="w-full grid justify-end">
-        <ul class="hidden md:flex space-x-8 font-bold">
-          <li><a href="#">Telegram</a></li>
-          <li><a href="#">Github</a></li>
+        <ul class="hidden md:flex space-x-8 text-black font-bold">
+          <li><a href="https://t.me/RijalBinHusen">Telegram</a></li>
+          <li><a href="https://github.com/rijalBinHusen/">Github</a></li>
         </ul>
         <div class="md:hidden">
           <svg
@@ -62,55 +63,7 @@
 
     <!-- Main -->
     <div class="md:gap-4 p-6 bg-blue-50 md:grid">
-      <div class="grid grid-cols-2 justify-between lg:px-40 md:mb-4">
-        <h1 class="justify-start md:text-left text-2xl">
-          Recent posts
-        </h1>
-        <p class="hidden md:block text-right text-2xl">
-          View all
-        </p>
-      </div>
-      <div class="md:grid grid-cols-2 gap-6 lg:px-40">
-        <div>
-          <div class="bg-white p-4">
-            <div>
-              <div class="mb-4">
-                <h1 class="text-2xl font-bold text-gray-700">
-                  Making a design system from scratch
-                </h1>
-              </div>
-
-              <div class="">
-                <span class="block mb-4 text-xl">12 Feb 20 20 | Design, Pattern</span>
-                <p class="text-lg text-gray-700">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-4 md:mt-0 mt-6">
-          <div>
-            <div class="mb-4">
-              <h1 class="text-2xl font-bold text-gray-700">
-                Creating pixel perfect icons in Figma
-              </h1>
-              <p class="hidden">
-                View all
-              </p>
-            </div>
-
-            <div class="">
-              <span class="block mb-4 text-xl">12 Feb 20 20 | Design, Pattern</span>
-              <p class="text-lg text-gray-700">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <Activity />
       <div class="mt-6 p-4 bg-white px-6">
         <div class="border-b pb-6">
           <h1 class="mt-2 mb-6 text-center text-xl">
@@ -140,6 +93,7 @@
         </div>
       </div>
     </div>
+<!-- Main -->
     <footer class="bg-white">
       <div class="flex mt-20 px-10 items-center justify-around max-md">
         <span>
