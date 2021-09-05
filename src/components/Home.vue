@@ -71,20 +71,20 @@ import Activity from './Activity.vue'
           </h1>
           <div class="md:grid grid-cols-2 gap-6">
             <div>
-              <img
+              <!-- <img
                 class="md:h-full object-cover"
                 src="https://images.unsplash.com/photo-1602992708529-c9fdb12905c9"
                 alt=""
-              >
+              > -->
             </div>
             <div>
               <h1 class="my-6 text-2xl font-bold text-gray-700">
                 Designing Dashboards
               </h1>
               <span class="text-lg mr-4 py-1 px-4 rounded-full bg-gray-800 text-white">2020</span>
-              <spnan class="text-lg">
+              <span class="text-lg">
                 Dashboard
-              </spnan>
+              </span>
               <p class="mt-6 text-lg text-gray-700">
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
               </p>

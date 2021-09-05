@@ -65,19 +65,30 @@
       <div class="bg-white p-4 md:mt-0 mt-6">
         <div>
           <div class="mb-4">
-            <h1 class="text-2xl font-bold text-gray-700">
-              Creating pixel perfect icons in Figma
+            <h1 class="text-2xl font-bold text-gray-700 inline mr-10">
+              Weather
             </h1>
-            <p class="hidden">
-              View all
-            </p>
+            <input
+              class="border inline text-xl pl-2"
+              type="text"
+              name="city"
+              :value="city"
+              placeholder="Input city"
+              @change="getWeather($event.target.value)"
+            >
           </div>
 
-          <div class="">
-            <span class="block mb-4 text-xl">12 Feb 20 20 | Design, Pattern</span>
-            <p class="text-lg text-gray-700">
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-            </p>
+          <div v-if="weather.name">
+            <span class="block mb-4 text-xl font-bold">
+              {{ weather.name }}
+              <sup> {{ weather.sys.country }} </sup>
+            </span>
+            <div class="text-lg text-6xl text-gray-700">
+              {{ weather.main.temp }} 
+              <sup> o </sup>C
+            </div>
+            <p>Gambar awan</p>
+            <p> {{ weather.weather[0].description }}</p>
           </div>
         </div>
       </div>
@@ -91,14 +102,30 @@ export default {
     data() {
         return {
             github: [],
-       }
+            weather: {},
+            city: "London",
+        }
     },
     mounted() {
+        // /github
         this.http.get("https://api.github.com/users/rijalBinHusen/events")
         .then( (response) => this.github = response.data )
         .catch(function (error) {
             console.log(error);
-        })
+        });
+
+        // weateher
+        this.getWeather(this.city)
+    },
+    methods: {
+        getWeather(city) {
+            this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=15d44f1a44552bfddc3a735c06c66344&units=metric`)
+            .then( (response) => this.weather = response.data)
+            .catch( (error) => {
+            console.log(error)
+            })
+            this.city = city
+        }
     },
 }
 </script>
