@@ -1,21 +1,43 @@
-<script setup>
-import Activity from './Activity.vue'
-// import { ref } from 'vue'
+<script>
+export default {
+    data() {
+        return {
+            github: [],
+            weather: {},
+            city: "London",
+        }
+    },
+    mounted() {
+        // /github
+        this.http.get("https://api.github.com/users/rijalBinHusen/events")
+        .then( (response) => this.github = response.data )
+        .catch(function (error) {
+            console.log(error);
+        });
 
-// defineProps({
-//   msg: String
-// })
-
-// const count = ref(0)
+        // weateher
+        this.getWeather(this.city)
+    },
+    methods: {
+        getWeather(city) {
+            this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=15d44f1a44552bfddc3a735c06c66344&units=metric`)
+            .then( (response) => this.weather = response.data)
+            .catch( (error) => {
+            console.log(error)
+            })
+            this.city = city
+        }
+    },
+}
 </script>
 
 <template>
   <div>
     <!-- Creaet Blog Portfolio By Joker Banny -->
-    <header class="max-h-full bg-opacity-50 bg-white p-6 grid">
+    <header class="max-h-full bg-opacity-40 bg-white p-6 grid">
       <!-- Navbar Menu -->
-      <nav class="w-full grid justify-end">
-        <ul class="hidden md:flex space-x-8 text-black font-bold">
+      <nav class="w-full grid justify-end font-bold">
+        <ul class="hidden md:flex space-x-8">
           <li><a href="https://t.me/RijalBinHusen">Telegram</a></li>
           <li><a href="https://github.com/rijalBinHusen/">Github</a></li>
         </ul>
@@ -62,38 +84,181 @@ import Activity from './Activity.vue'
     </header>
 
     <!-- Main -->
-    <div class="md:gap-4 p-6 bg-blue-50 md:grid">
-      <Activity />
+    <div class="md:gap-4 p-6 md:grid md:bg-white md:bg-opacity-50">
+      <div class="grid grid-cols-2 justify-between lg:px-40 pb-2 mb-2 border-b-2 border-white ">
+        <h1 class="justify-start md:text-left text-2xl font-bold">
+          Activity
+        </h1>
+      </div>
+      <div 
+        class="md:grid grid-cols-2 gap-6 lg:px-40"
+      >
+        <div 
+          style="max-height:300px;" 
+          class="overflow-auto"
+        >
+          <div class="p-4 bg-white bg-opacity-50">
+            <div class="">
+              <div class="mb-4">
+                <h1 class="text-2xl font-bold text-gray-700">
+                  Github
+                </h1>
+              </div>
+
+              <div class="h-full">
+                <span
+                  v-if="github.length > 0"
+                  class="text-lg text-gray-700"
+                >
+                  <div
+                    v-for="act in github "
+                    :key="act.id"
+                    class="border-b-2 pb-2 border-white"
+                  >
+                    <!-- Date -->
+                    <b>{{ new Date(act.created_at).toISOString().slice(0, 10) }}</b>
+                    <br>
+                    <!-- actor and activity -->
+                    {{ " @" + act.actor.login }} 
+                    <!-- activity -->
+                    <b> {{ " " + act.type.replace("Event", "") }} </b>
+                    <!-- repo name -->
+                    {{ " repository " + act.repo.name }}
+                    <!-- if activity is push, show the commit -->
+                    <div 
+                      v-if="act.type === 'PushEvent'"
+                      class=""
+                    >
+                      <b> Commit list:</b>
+                      <ul class="list-disc ml-4">
+                        <li
+                          v-for="commit in act.payload.commits"
+                          :key="commit.sha"
+                        >
+                          {{ commit.message }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white bg-opacity-50 p-4 md:mt-0 mt-6">
+          <div>
+            <div class="mb-4">
+              <h1 class="text-2xl font-bold text-gray-700 inline mr-10">
+                Weather
+              </h1>
+              <input
+                class="border inline text-xl pl-2"
+                type="text"
+                name="city"
+                :value="city"
+                placeholder="Input city"
+                @change="getWeather($event.target.value)"
+              >
+            </div>
+
+            <div v-if="weather.name">
+              <span class="block mb-4 text-xl font-bold">
+                {{ weather.name }}
+                <sup> {{ weather.sys.country }} </sup>
+              </span>
+              <div class="text-lg text-6xl text-gray-700">
+                {{ weather.main.temp }} 
+                <sup> o </sup>C
+              </div>
+              <p>Gambar awan</p>
+              <p> {{ weather.weather[0].description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of activity -->
+
+      <!-- Futured work -->
       <div class="mt-6 p-4 bg-white px-6">
         <div class="border-b pb-6">
-          <h1 class="mt-2 mb-6 text-center text-xl">
-            Featured works
+          <h1 class="mt-2 mb-6 text-center text-3xl font-bold">
+            My Skill 
+            <font-awesome-icon icon="trophy" />
           </h1>
           <div class="md:grid grid-cols-2 gap-6">
-            <div>
-              <!-- <img
-                class="md:h-full object-cover"
-                src="https://images.unsplash.com/photo-1602992708529-c9fdb12905c9"
-                alt=""
-              > -->
-            </div>
-            <div>
-              <h1 class="my-6 text-2xl font-bold text-gray-700">
-                Designing Dashboards
-              </h1>
-              <span class="text-lg mr-4 py-1 px-4 rounded-full bg-gray-800 text-white">2020</span>
-              <span class="text-lg">
-                Dashboard
-              </span>
-              <p class="mt-6 text-lg text-gray-700">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-              </p>
+            <div class="row">
+              <div class="col-auto">
+                <p class="">
+                  <font-awesome-icon icon="code" /> HTML
+                </p>
+                <p>
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star-half-alt" />
+                  <i class="far fa-star" />
+                </p>
+              </div>
+              <div class="col-auto">
+                <p class="">
+                  <i class="fab fa-css3" /> CSS
+                </p>
+                <p>
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star-half-alt" />
+                  <i class="far fa-star" />
+                </p>
+              </div>
+              <div class="col-auto">
+                <p class="">
+                  <i class="fab fa-js" /> JavaScript
+                </p>
+                <p>
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star-half-alt" />
+                  <i class="far fa-star" />
+                </p>
+              </div>
+              <div class="col-auto">
+                <p class="">
+                  <i class="fab fa-bootstrap" /> Bootstrap
+                </p>
+                <p>
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star-half-alt" />
+                  <i class="far fa-star" />
+                </p>
+              </div>
+              <div class="col-auto">
+                <p class="w3css">
+                  {W3} W3 css
+                </p>
+                <p>
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star-half-alt" />
+                  <i class="far fa-star" />
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-<!-- Main -->
+    <!-- Main -->
     <footer class="bg-white">
       <div class="flex mt-20 px-10 items-center justify-around max-md">
         <span>
@@ -167,9 +332,3 @@ import Activity from './Activity.vue'
     </footer>
   </div>
 </template>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-</style>

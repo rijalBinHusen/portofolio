@@ -1,6 +1,6 @@
 <template>
-  <div class="md:gap-4 p-6 bg-blue-50 md:grid">
-    <div class="grid grid-cols-2 justify-between lg:px-40 mb-4">
+  <div class="md:gap-4 p-6 md:grid md:bg-white md:bg-opacity-50">
+    <div class="grid grid-cols-2 justify-between lg:px-40 pb-2 mb-2 border-b-2">
       <h1 class="justify-start md:text-left text-2xl font-bold">
         Activity
       </h1>
@@ -13,7 +13,7 @@
         style="max-height:300px;" 
         class="overflow-auto"
       >
-        <div class="bg-white p-4">
+        <div class="p-4 bg-opacity-50">
           <div class="">
             <div class="mb-4">
               <h1 class="text-2xl font-bold text-gray-700">
@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div class="bg-white p-4 md:mt-0 mt-6">
+      <div class="bg-white bg-opacity-50 p-4 md:mt-0 mt-6">
         <div>
           <div class="mb-4">
             <h1 class="text-2xl font-bold text-gray-700 inline mr-10">

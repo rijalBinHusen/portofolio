@@ -3,6 +3,10 @@
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import Home from './components/Home.vue'
 // import Activity from './components/Activity.vue'
+import LocomotiveScroll from 'locomotive-scroll';
+
+const scroll = new LocomotiveScroll();
+
 </script>
 
 <template>
