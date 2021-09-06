@@ -1,36 +1,3 @@
-<script>
-export default {
-    data() {
-        return {
-            github: [],
-            weather: {},
-            city: "London",
-        }
-    },
-    mounted() {
-        // /github
-        this.http.get("https://api.github.com/users/rijalBinHusen/events")
-        .then( (response) => this.github = response.data )
-        .catch(function (error) {
-            console.log(error);
-        });
-
-        // weateher
-        this.getWeather(this.city)
-    },
-    methods: {
-        getWeather(city) {
-            this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=15d44f1a44552bfddc3a735c06c66344&units=metric`)
-            .then( (response) => this.weather = response.data)
-            .catch( (error) => {
-            console.log(error)
-            })
-            this.city = city
-        }
-    },
-}
-</script>
-
 <template>
   <div>
     <!-- Creaet Blog Portfolio By Joker Banny -->
@@ -94,10 +61,12 @@ export default {
         class="md:grid grid-cols-2 gap-6 lg:px-40"
       >
         <div 
-          style="max-height:300px;" 
-          class="overflow-auto"
+          style="height:300px;" 
+          :class="['overflow-auto', github.length > 0 
+            ? 'bg-white bg-opacity-50' 
+            : 'bg-blue-100 animate-pulse']"
         >
-          <div class="p-4 bg-white bg-opacity-50">
+          <div class="p-4">
             <div class="">
               <div class="mb-4">
                 <h1 class="text-2xl font-bold text-gray-700">
@@ -146,7 +115,10 @@ export default {
           </div>
         </div>
 
-        <div class="bg-white bg-opacity-50 p-4 md:mt-0 mt-6">
+        <div 
+          style="height:300px;"
+          class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50"
+        >
           <div>
             <div class="mb-4">
               <h1 class="text-2xl font-bold text-gray-700 inline mr-10">
@@ -162,17 +134,17 @@ export default {
               >
             </div>
 
-            <div v-if="weather.name">
+            <div :calss="[ weather.name ? '' : 'bg-blue-100 animate-pulse']">
               <span class="block mb-4 text-xl font-bold">
-                {{ weather.name }}
-                <sup> {{ weather.sys.country }} </sup>
+                {{ weather.name || 'City not found' }}
+                <!-- <sup> {{ weather.sys.country || 'Country not found' }} </sup> -->
               </span>
               <div class="text-lg text-6xl text-gray-700">
-                {{ weather.main.temp }} 
+                <!-- {{ weather.main.temp || 'Temperature not found' }}  -->
                 <sup> o </sup>C
               </div>
               <p>Gambar awan</p>
-              <p> {{ weather.weather[0].description }}</p>
+              <!-- <p> {{ weather.weather[0].description || 'Not found' }}</p> -->
             </div>
           </div>
         </div>
@@ -216,7 +188,7 @@ export default {
               </div>
               <div class="col-auto">
                 <p class="">
-                  <i class="fab fa-js" /> JavaScript
+                  <font-awesome-icon :icon="['fab', 'js']" /> JavaScript
                 </p>
                 <p>
                   <font-awesome-icon icon="star" />
@@ -332,3 +304,35 @@ export default {
     </footer>
   </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            github: [],
+            weather: {},
+            city: "London",
+        }
+    },
+    mounted() {
+        // /github
+        this.http.get("https://api.github.com/users/rijalBinHusen/events")
+        .then( (response) => this.github = response.data )
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        // weateher
+        this.getWeather(this.city)
+    },
+    methods: {
+        getWeather(city) {
+            this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=15d44f1a44552bfddc3a735c06c66344&units=metric`)
+            .then( (response) => this.weather = response.data)
+            .catch( (error) => {
+            console.log(error)
+            })
+            this.city = city
+        }
+    },
+}
+</script>

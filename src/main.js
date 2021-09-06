@@ -7,15 +7,18 @@ import {
     faTrophy,
     faCode,
     faStar,
-    faStarHalfAlt
+    faStarHalfAlt,
+    
 } from "@fortawesome/free-solid-svg-icons";
+import { faJs } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(
     faTrophy,
     faCode,
     faStar,
-    faStarHalfAlt
+    faStarHalfAlt,
+    faJs
 );
 
 
