@@ -8,9 +8,15 @@ import {
     faCode,
     faStar,
     faStarHalfAlt,
-    
 } from "@fortawesome/free-solid-svg-icons";
-import { faJs } from "@fortawesome/free-brands-svg-icons"
+import { faJs, 
+         faCss3,
+         faBootstrap,
+         faVuejs,
+         faNodeJs,
+         faTelegramPlane,
+         faGithub
+        } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(
@@ -18,7 +24,13 @@ library.add(
     faCode,
     faStar,
     faStarHalfAlt,
-    faJs
+    faJs,
+    faCss3,
+    faBootstrap,
+    faVuejs,
+    faNodeJs,
+    faTelegramPlane,
+    faGithub
 );
 
 

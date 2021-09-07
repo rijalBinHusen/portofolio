@@ -1,14 +1,24 @@
 <template>
   <div>
     <!-- Creaet Blog Portfolio By Joker Banny -->
-    <header class="max-h-full bg-opacity-40 bg-white p-6 grid">
+    <header class="h-screen bg-opacity-40 bg-white p-6 grid">
       <!-- Navbar Menu -->
       <nav class="w-full grid justify-end font-bold">
         <ul class="hidden md:flex space-x-8">
-          <li><a href="https://t.me/RijalBinHusen">Telegram</a></li>
-          <li><a href="https://github.com/rijalBinHusen/">Github</a></li>
+          <li>
+            <span class="mr-2">
+              <font-awesome-icon :icon="['fab', 'telegram-plane']" /> 
+            </span>
+            <a href="https://t.me/RijalBinHusen">Telegram</a>
+          </li>
+          <li>
+            <span class="mr-2">
+              <font-awesome-icon :icon="['fab', 'github']" /> 
+            </span>
+            <a href="https://github.com/rijalBinHusen/">Github</a>
+          </li>
         </ul>
-        <div class="md:hidden">
+        <!-- <div class="md:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-10 w-10 text-gray-700 cursor-pointer"
@@ -23,7 +33,7 @@
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
-        </div>
+        </div> -->
       </nav>
 
       <!-- Section Hero  -->
@@ -41,11 +51,8 @@
           </h1>
           <p class="text-xl text-gray-800 text-center md:text-left">
             It’s so glad to have you here, This page would tell you about me.<br>
-            So... just hit the button below.
+            So... just continue you scroll.
           </p>
-          <button class="block mt-8 mx-auto md:mx-0 text-2xl py-3 px-6 text-red-50 font-semibold rounded bg-red-400">
-            Download Resume
-          </button>
         </div>
       </div>
     </header>
@@ -58,7 +65,7 @@
         </h1>
       </div>
       <div 
-        class="md:grid grid-cols-2 gap-6 lg:px-40"
+        class="md:grid grid-cols-2 gap-6 lg:px-40 md:h-screen"
       >
         <div 
           style="height:300px;" 
@@ -143,11 +150,11 @@
         >
           <div>
             <div class="mb-4">
-              <h1 class="text-2xl font-bold text-gray-700 inline mr-10">
+              <h1 class="text-2xl font-bold text-gray-700 inline md:mr-10 mr-2">
                 Weather
               </h1>
               <input
-                class="border inline text-xl pl-2"
+                class="border inline md:text-xl pl-2 rounded bg-white bg-opacity-50"
                 type="text"
                 name="city"
                 :value="city"
@@ -196,80 +203,101 @@
       </div>
       <!-- End of activity -->
 
-      <!-- Futured work -->
-      <div class="mt-6 p-4 bg-white px-6">
-        <div class="border-b pb-6">
-          <h1 class="mt-2 mb-6 text-center text-3xl font-bold">
+      <!-- SkILL -->
+      <div class="mt-6 p-4 bg-white md:text-center md:text-3xl text-2xl px-6">
+        <div class="md:border-b pb-6">
+          <h1 class="mt-2 mb-6 font-bold">
             My Skill 
             <font-awesome-icon icon="trophy" />
           </h1>
-          <div class="md:grid grid-cols-2 gap-6">
-            <div class="row">
-              <div class="col-auto">
-                <p class="">
-                  <font-awesome-icon icon="code" /> HTML
-                </p>
-                <p>
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star-half-alt" />
-                  <i class="far fa-star" />
-                </p>
-              </div>
-              <div class="col-auto">
-                <p class="">
-                  <i class="fab fa-css3" /> CSS
-                </p>
-                <p>
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star-half-alt" />
-                  <i class="far fa-star" />
-                </p>
-              </div>
-              <div class="col-auto">
-                <p class="">
-                  <font-awesome-icon :icon="['fab', 'js']" /> JavaScript
-                </p>
-                <p>
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star-half-alt" />
-                  <i class="far fa-star" />
-                </p>
-              </div>
-              <div class="col-auto">
-                <p class="">
-                  <i class="fab fa-bootstrap" /> Bootstrap
-                </p>
-                <p>
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star-half-alt" />
-                  <i class="far fa-star" />
-                </p>
-              </div>
-              <div class="col-auto">
-                <p class="w3css">
-                  {W3} W3 css
-                </p>
-                <p>
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star" />
-                  <font-awesome-icon icon="star-half-alt" />
-                  <i class="far fa-star" />
-                </p>
-              </div>
+          <div class="md:grid grid-cols-4 gap-6">
+            <div class="md:border-0 border-b pb-5 mb-4">
+              <p class="">
+                <font-awesome-icon icon="code" /> HTML
+              </p>
+              <p>
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star-half-alt" />
+              </p>
+            </div>
+            <div class="md:border-0 border-b pb-5 mb-4">
+              <p class="">
+                <font-awesome-icon :icon="['fab', 'css3']" /> CSS
+              </p>
+              <p>
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star-half-alt" />
+              </p>
+            </div>
+            <div class="md:border-0 border-b pb-5 mb-4">
+              <p class="">
+                <font-awesome-icon :icon="['fab', 'js']" /> JavaScript
+              </p>
+              <p>
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star-half-alt" />
+              </p>
+            </div>
+            <div class="md:border-0 border-b pb-5 mb-4">
+              <p class="">
+                <font-awesome-icon :icon="['fab', 'bootstrap']" /> Bootstrap
+              </p>
+              <p>
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star-half-alt" />
+              </p>
+            </div>
+            <div class="md:border-0 border-b pb-5 mb-4">
+              <p class="">
+                <b>{W3}</b> W3css
+              </p>
+              <p>
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+              </p>
+            </div>
+            <div class="md:border-0 border-b pb-5 mb-4">
+              <p class="">
+                <font-awesome-icon :icon="['fab', 'vuejs']" /> VueJS
+              </p>
+              <p>
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star-half-alt" />
+              </p>
+            </div>
+            <div class="md:border-0 border-b pb-5 mb-4">
+              <p class="">
+                <font-awesome-icon :icon="['fab', 'node-js']" /> NodeJS
+              </p>
+              <p>
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star-half-alt" />
+              </p>
+            </div>
+            <div class="md:border-0 border-b pb-5 mb-4">
+              <p class="">
+                Tailwindcss
+              </p>
+              <p>
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon icon="star-half-alt" />
+              </p>
             </div>
           </div>
         </div>
