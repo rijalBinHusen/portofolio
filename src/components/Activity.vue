@@ -108,24 +108,24 @@ export default {
     },
     mounted() {
         // /github
-        this.http.get("https://api.github.com/users/rijalBinHusen/events")
-        .then( (response) => this.github = response.data )
-        .catch(function (error) {
-            console.log(error);
-        });
+        // this.http.get("https://api.github.com/users/rijalBinHusen/events")
+        // .then( (response) => this.github = response.data )
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
 
-        // weateher
-        this.getWeather(this.city)
+        // // weateher
+        // this.getWeather(this.city)
     },
     methods: {
-        getWeather(city) {
-            this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=15d44f1a44552bfddc3a735c06c66344&units=metric`)
-            .then( (response) => this.weather = response.data)
-            .catch( (error) => {
-            console.log(error)
-            })
-            this.city = city
-        }
+        // getWeather(city) {
+        //     this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=15d44f1a44552bfddc3a735c06c66344&units=metric`)
+        //     .then( (response) => this.weather = response.data)
+        //     .catch( (error) => {
+        //     console.log(error)
+        //     })
+        //     this.city = city
+        // }
     },
 }
 </script>

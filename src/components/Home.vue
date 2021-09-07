@@ -62,9 +62,7 @@
       >
         <div 
           style="height:300px;" 
-          :class="['overflow-auto', github.length > 0 
-            ? 'bg-white bg-opacity-50' 
-            : 'bg-blue-100 animate-pulse']"
+          class="overflow-auto bg-white bg-opacity-50"
         >
           <div class="p-4">
             <div class="">
@@ -75,6 +73,7 @@
               </div>
 
               <div class="h-full">
+                <!-- Github events -->
                 <span
                   v-if="github.length > 0"
                   class="text-lg text-gray-700"
@@ -110,10 +109,33 @@
                     </div>
                   </div>
                 </span>
+
+                <!-- Skeleton loading -->
+                <div v-else>
+                  <div
+                    style="height:75px; background: rgba(140,226,255,1) 39%;"
+                    class="rounded animate-pulse text-center font-bold mb-2"
+                  >
+                    <span />
+                  </div>
+                  <div
+                    style="height:65px; background: rgba(140,226,255,1) 39%;"
+                    class="rounded animate-pulse text-center font-bold mb-2"
+                  >
+                    <span />
+                  </div>
+                  <div
+                    style="height:60px; background: rgba(140,226,255,1) 39%;"
+                    class="rounded animate-pulse text-center font-bold"
+                  >
+                    <span />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- End of Github events -->
 
         <div 
           style="height:300px;"
@@ -338,30 +360,30 @@ export default {
     },
     mounted() {
         // /github
-        this.http.get("https://api.github.com/users/rijalBinHusen/events")
-        .then( (response) => this.github = response.data )
-        .catch(function (error) {
-            console.log(error);
-        });
+        // this.http.get("https://api.github.com/users/rijalBinHusen/events")
+        // .then( (response) => this.github = response.data )
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
 
-        // weateher
-        this.getWeather(this.city)
+        // // weateher
+        // this.getWeather(this.city)
     },
     methods: {
-        getWeather(city) {
-            this.weather = ""
-            this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=15d44f1a44552bfddc3a735c06c66344&units=metric`)
-            .then( (response) => this.weather = response.data)
-            .catch( (error) => this.weather = {
-              name: "Not found",
-              sys: { country: ""},
-              main: {temp: ""},
-              weather: [
-                { description: "" }
-              ]
-            })
-            this.city = city
-        }
+        // getWeather(city) {
+        //     this.weather = ""
+        //     this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=15d44f1a44552bfddc3a735c06c66344&units=metric`)
+        //     .then( (response) => this.weather = response.data)
+        //     .catch( (error) => this.weather = {
+        //       name: "Not found",
+        //       sys: { country: ""},
+        //       main: {temp: ""},
+        //       weather: [
+        //         { description: "" }
+        //       ]
+        //     })
+        //     this.city = city
+        // }
     },
 }
 </script>
