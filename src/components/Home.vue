@@ -61,7 +61,7 @@
     <div class="md:gap-4 p-6 md:grid md:bg-white md:bg-opacity-50">
       <div class="grid grid-cols-2 justify-between lg:px-40 pb-2 mb-2 border-b-2 border-white ">
         <h1 class="justify-start md:text-left text-2xl font-bold">
-          Activity
+          Api Consume
         </h1>
       </div>
       <div 
@@ -69,13 +69,7 @@
       >
         <Github />
         <Weather />
-        <!-- Country search -->
-        <div 
-          style="height:280px;"
-          class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50"
-        >
-          <Skeleton :rows="3" />
-        </div>
+        <City />
         <!-- End of Country search -->
 
         <!-- Youtube -->
@@ -313,14 +307,14 @@
 </template>
 <script>
 import Github from "./Github.vue";
-import Skeleton from "./SkeletonLoading.vue";
-import Weather from "./Weather.vue"
+import Weather from "./Weather.vue";
+import City from "./City.vue";
 
 export default {
     components: {
       Github,
-      Skeleton,
       Weather,
+      City,
     },
 }
 </script>

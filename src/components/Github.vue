@@ -7,7 +7,7 @@
       <div class="">
         <div class="mb-4">
           <h1 class="text-2xl font-bold text-gray-700">
-            Github
+            My Github
           </h1>
         </div>
           

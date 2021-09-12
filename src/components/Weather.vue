@@ -50,7 +50,14 @@ export default {
     },
     data() {
         return {
-            weather: {},
+            weather: {
+              name: "Type a city",
+              sys: { country: ""},
+              main: {temp: ""},
+              weather: [
+                { description: "" }
+              ]},
+
             city: "",
         }
     },
