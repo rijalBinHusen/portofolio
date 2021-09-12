@@ -57,7 +57,6 @@ export default {
     components: {
         Skeleton,
     },
-    emits: ["country"],
     data() {
         return {
             result: {
@@ -78,7 +77,6 @@ export default {
             this.http.get(`https://restcountries.eu/rest/v2/name/${city}?fullText=true`)
             .then( (response) => {
                 this.result = response.data[0];
-                this.$emit("country", response.data[0].altSpellings[0])
             })
             .catch( (error) => this.result = {
               name: "Not found",

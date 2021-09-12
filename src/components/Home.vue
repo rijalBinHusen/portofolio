@@ -69,17 +69,8 @@
       >
         <Github />
         <Weather />
-        <City @country="trending($event)" />
-        <!-- End of Country search -->
-
-        <!-- Youtube -->
-        <div 
-          style="height:280px;"
-          class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50"
-        >
-          COuntry
-        </div>
-        <!-- End of youtube -->
+        <City />
+        <RandomUser />
       </div>
       <!-- End of activity -->
 
@@ -309,12 +300,14 @@
 import Github from "./Github.vue";
 import Weather from "./Weather.vue";
 import City from "./City.vue";
+import RandomUser from "./RandomUser.vue"
 
 export default {
     components: {
       Github,
       Weather,
       City,
+      RandomUser,
     },
 }
 </script>

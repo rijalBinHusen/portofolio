@@ -8,6 +8,7 @@ import {
     faCode,
     faStar,
     faStarHalfAlt,
+    faSync,
 } from "@fortawesome/free-solid-svg-icons";
 import { faJs, 
          faCss3,
@@ -31,6 +32,7 @@ library.add(
     faNodeJs,
     faTelegramPlane,
     faGithub,
+    faSync
 );
 
 
