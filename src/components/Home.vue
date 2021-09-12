@@ -69,7 +69,7 @@
       >
         <Github />
         <Weather />
-        <City />
+        <City @country="trending($event)" />
         <!-- End of Country search -->
 
         <!-- Youtube -->

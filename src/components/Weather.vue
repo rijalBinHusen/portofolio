@@ -13,7 +13,7 @@
           type="text"
           name="city"
           :value="city"
-          placeholder="Type city"
+          placeholder="Type a city"
           @change="getWeather($event.target.value)"
         >
       </div>

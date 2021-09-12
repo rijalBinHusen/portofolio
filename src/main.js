@@ -15,7 +15,7 @@ import { faJs,
          faVuejs,
          faNodeJs,
          faTelegramPlane,
-         faGithub
+         faGithub,
         } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -30,7 +30,7 @@ library.add(
     faVuejs,
     faNodeJs,
     faTelegramPlane,
-    faGithub
+    faGithub,
 );
 
 

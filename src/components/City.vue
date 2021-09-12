@@ -23,7 +23,7 @@
           <span class="absolute">
             <img
               :src="result.flag"
-              alt="Flags"
+              alt="Flag"
               style="width:100px"
             >
           </span>
@@ -57,6 +57,7 @@ export default {
     components: {
         Skeleton,
     },
+    emits: ["country"],
     data() {
         return {
             result: {
@@ -75,7 +76,10 @@ export default {
         getCity(city) {
             this.result = {};
             this.http.get(`https://restcountries.eu/rest/v2/name/${city}?fullText=true`)
-            .then( (response) => this.result = response.data[0])
+            .then( (response) => {
+                this.result = response.data[0];
+                this.$emit("country", response.data[0].altSpellings[0])
+            })
             .catch( (error) => this.result = {
               name: "Not found",
               altSpellings: ["Not found"],
