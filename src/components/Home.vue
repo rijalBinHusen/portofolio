@@ -67,82 +67,8 @@
       <div 
         class="md:grid grid-cols-2 gap-6 lg:px-40 md:h-screen"
       >
-        <div 
-          style="height:300px;" 
-          class="overflow-auto bg-white bg-opacity-50"
-        >
-          <div class="p-4">
-            <div class="">
-              <div class="mb-4">
-                <h1 class="text-2xl font-bold text-gray-700">
-                  Github
-                </h1>
-              </div>
-
-              <div class="h-full">
-                <!-- Github events -->
-                <span
-                  v-if="github.length > 0"
-                  class="text-lg text-gray-700"
-                >
-                  <div
-                    v-for="act in github "
-                    :key="act.id"
-                    class="border-b-2 pb-2 border-white"
-                  >
-                    <!-- Date -->
-                    <b>{{ new Date(act.created_at).toISOString().slice(0, 10) }}</b>
-                    <br>
-                    <!-- actor and activity -->
-                    {{ " @" + act.actor.login }} 
-                    <!-- activity -->
-                    <b> {{ " " + act.type.replace("Event", "") }} </b>
-                    <!-- repo name -->
-                    {{ " repository " + act.repo.name }}
-                    <!-- if activity is push, show the commit -->
-                    <div 
-                      v-if="act.type === 'PushEvent'"
-                      class=""
-                    >
-                      <b> Commit list:</b>
-                      <ul class="list-disc ml-4">
-                        <li
-                          v-for="commit in act.payload.commits"
-                          :key="commit.sha"
-                        >
-                          {{ commit.message }}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </span>
-
-                <!-- Skeleton loading -->
-                <div v-else>
-                  <div
-                    style="height:75px; background: rgba(140,226,255,1) 39%;"
-                    class="rounded animate-pulse text-center font-bold mb-2"
-                  >
-                    <span />
-                  </div>
-                  <div
-                    style="height:65px; background: rgba(140,226,255,1) 39%;"
-                    class="rounded animate-pulse text-center font-bold mb-2"
-                  >
-                    <span />
-                  </div>
-                  <div
-                    style="height:60px; background: rgba(140,226,255,1) 39%;"
-                    class="rounded animate-pulse text-center font-bold"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End of Github events -->
+        <Github />
+            
 
         <div 
           style="height:300px;"
@@ -179,33 +105,35 @@
             <!-- Skeleton loading -->
 
             <div v-else>
-              <div
-                style="height:75px; background: rgba(140,226,255,1) 39%;"
-                class="rounded animate-pulse text-center font-bold mb-2"
-              >
-                <span />
-              </div>
-              <div
-                style="height:65px; background: rgba(140,226,255,1) 39%;"
-                class="rounded animate-pulse text-center font-bold mb-2"
-              >
-                <span />
-              </div>
-              <div
-                style="height:60px; background: rgba(140,226,255,1) 39%;"
-                class="rounded animate-pulse text-center font-bold"
-              >
-                <span />
-              </div>
+              <Skeleton :rows="3" />
             </div>
           </div>
         </div>
+        <!-- End of wheather -->
+
+        <!-- Country search -->
+        <div 
+          style="height:280px;"
+          class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50"
+        >
+          <Skeleton :rows="3" />
+        </div>
+        <!-- End of Country search -->
+
+        <!-- Youtube -->
+        <div 
+          style="height:280px;"
+          class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50"
+        >
+          COuntry
+        </div>
+        <!-- End of youtube -->
       </div>
       <!-- End of activity -->
 
       <!-- SkILL -->
-      <div class="mt-6 p-4 bg-white md:text-center md:text-3xl text-2xl px-6">
-        <div class="md:border-b pb-6">
+      <div class="mt-6 p-4 bg-white bg-opacity-50 md:text-center md:text-3xl text-2xl px-6">
+        <div class="md:border-b border-black pb-6">
           <h1 class="mt-2 mb-6 font-bold">
             My Skill 
             <font-awesome-icon icon="trophy" />
@@ -220,7 +148,10 @@
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
-                <font-awesome-icon icon="star-half-alt" />
+                <font-awesome-icon
+                  class="text-gray-400"
+                  icon="star"
+                />
               </p>
             </div>
             <div class="md:border-0 border-b pb-5 mb-4">
@@ -230,7 +161,14 @@
               <p>
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
-                <font-awesome-icon icon="star-half-alt" />
+                <font-awesome-icon icon="star" />
+                <font-awesome-icon
+                  class="text-gray-400"
+                  icon="star"
+                /><font-awesome-icon
+                  class="text-gray-400"
+                  icon="star"
+                />
               </p>
             </div>
             <div class="md:border-0 border-b pb-5 mb-4">
@@ -242,7 +180,10 @@
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
-                <font-awesome-icon icon="star-half-alt" />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
               </p>
             </div>
             <div class="md:border-0 border-b pb-5 mb-4">
@@ -253,7 +194,13 @@
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
-                <font-awesome-icon icon="star-half-alt" />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                /><font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
               </p>
             </div>
             <div class="md:border-0 border-b pb-5 mb-4">
@@ -276,7 +223,14 @@
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
-                <font-awesome-icon icon="star-half-alt" />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
               </p>
             </div>
             <div class="md:border-0 border-b pb-5 mb-4">
@@ -286,7 +240,18 @@
               <p>
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
-                <font-awesome-icon icon="star-half-alt" />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
               </p>
             </div>
             <div class="md:border-0 border-b pb-5 mb-4">
@@ -296,7 +261,18 @@
               <p>
                 <font-awesome-icon icon="star" />
                 <font-awesome-icon icon="star" />
-                <font-awesome-icon icon="star-half-alt" />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
+                <font-awesome-icon
+                  icon="star"
+                  class="text-gray-400"
+                />
               </p>
             </div>
           </div>
@@ -378,7 +354,14 @@
   </div>
 </template>
 <script>
+import Github from "./Github.vue";
+import Skeleton from "./SkeletonLoading.vue"
+
 export default {
+    components: {
+      Github,
+      Skeleton,
+    },
     data() {
         return {
             github: [],
@@ -412,6 +395,6 @@ export default {
         //     })
         //     this.city = city
         // }
-    },
+    }
 }
 </script>
