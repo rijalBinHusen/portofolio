@@ -47,6 +47,10 @@
               </div>
             </div>
           </span>
+          <!-- Skeleton loading -->
+          <div v-else> 
+            <Skeleton :rows="3" />
+          </div>
         </div>
       </div>
     </div>
@@ -54,8 +58,12 @@
 </template>
 
 <script>
+import Skeleton from "./SkeletonLoading.vue"
 export default {
     name: "Github",
+    components: {
+      Skeleton,
+    },
     data() {
         return {
             github: [],

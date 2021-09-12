@@ -68,49 +68,7 @@
         class="md:grid grid-cols-2 gap-6 lg:px-40 md:h-screen"
       >
         <Github />
-            
-
-        <div 
-          style="height:300px;"
-          class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50"
-        >
-          <div>
-            <div class="mb-4">
-              <h1 class="text-2xl font-bold text-gray-700 inline md:mr-10 mr-2">
-                Weather
-              </h1>
-              <input
-                class="border inline md:text-xl pl-2 rounded bg-white bg-opacity-50"
-                type="text"
-                name="city"
-                :value="city"
-                placeholder="Input city"
-                @change="getWeather($event.target.value)"
-              >
-            </div>
-
-            <div v-if="weather.name">
-              <span class="block mb-4 text-xl font-bold">
-                {{ weather.name }}
-                <sup> {{ weather.sys.country }} </sup>
-              </span>
-              <div class="text-lg text-6xl text-gray-700">
-                {{ weather.main.temp }} 
-                <sup> o </sup>C
-              </div>
-              <p>Gambar awan</p>
-              <p> {{ weather.weather[0].description }}</p>
-            </div>
-
-            <!-- Skeleton loading -->
-
-            <div v-else>
-              <Skeleton :rows="3" />
-            </div>
-          </div>
-        </div>
-        <!-- End of wheather -->
-
+        <Weather />
         <!-- Country search -->
         <div 
           style="height:280px;"
@@ -355,46 +313,14 @@
 </template>
 <script>
 import Github from "./Github.vue";
-import Skeleton from "./SkeletonLoading.vue"
+import Skeleton from "./SkeletonLoading.vue";
+import Weather from "./Weather.vue"
 
 export default {
     components: {
       Github,
       Skeleton,
+      Weather,
     },
-    data() {
-        return {
-            github: [],
-            weather: {},
-            city: "London",
-        }
-    },
-    mounted() {
-        // /github
-        // this.http.get("https://api.github.com/users/rijalBinHusen/events")
-        // .then( (response) => this.github = response.data )
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
-
-        // // weateher
-        // this.getWeather(this.city)
-    },
-    methods: {
-        // getWeather(city) {
-        //     this.weather = ""
-        //     this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=15d44f1a44552bfddc3a735c06c66344&units=metric`)
-        //     .then( (response) => this.weather = response.data)
-        //     .catch( (error) => this.weather = {
-        //       name: "Not found",
-        //       sys: { country: ""},
-        //       main: {temp: ""},
-        //       weather: [
-        //         { description: "" }
-        //       ]
-        //     })
-        //     this.city = city
-        // }
-    }
 }
 </script>
