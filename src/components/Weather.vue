@@ -1,7 +1,7 @@
 <template>
   <div 
     style="height:300px;"
-    class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50"
+    class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50 border-2 rounded rounded-xl border-gray-400"
   >
     <div>
       <div class="mb-4">

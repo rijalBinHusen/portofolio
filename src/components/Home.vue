@@ -65,7 +65,7 @@
         </h1>
       </div>
       <div 
-        class="md:grid grid-cols-2 gap-6 lg:px-40 md:h-screen"
+        class="md:grid grid-cols-2 gap-2 lg:px-40 md:h-screen"
       >
         <Github />
         <Weather />

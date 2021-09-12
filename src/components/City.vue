@@ -1,7 +1,7 @@
 <template>
   <div 
     style="height:280px;"
-    class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50"
+    class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50 border-2 rounded rounded-xl border-gray-400"
   >
     <div>
       <div class="mb-4">
@@ -19,6 +19,15 @@
       </div>
 
       <div v-if="result.name">
+        <div class="grid justify-items-end">
+          <span class="absolute">
+            <img
+              :src="result.flag"
+              alt="Flags"
+              style="width:100px"
+            >
+          </span>
+        </div>
         <h1 class="text-2xl font-bold">
           {{ result.altSpellings.slice(-1)[0] }}
         </h1>
