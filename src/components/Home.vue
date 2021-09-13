@@ -68,9 +68,12 @@
         class="md:grid grid-cols-2 gap-2 lg:px-40 md:h-screen"
       >
         <Github />
-        <Weather />
-        <City />
-        <RandomUser />
+        <RandomUser
+          @country="changeCountry($event)"
+          @city="changeCity($event)"
+        />
+        <City :country="country" />
+        <Weather :city-user="city" />
       </div>
       <!-- End of activity -->
 
@@ -309,5 +312,19 @@ export default {
       City,
       RandomUser,
     },
+    data() {
+      return {
+        country: "",
+        city: ""
+      }
+    },
+    methods: {
+      changeCountry(country) {
+        this.country = country;
+      },
+      changeCity(city) {
+        this.city = city
+      }
+    }
 }
 </script>

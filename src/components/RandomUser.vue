@@ -1,6 +1,6 @@
 <template>
   <div 
-    style="height:280px;"
+    style="height:300px;"
     class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50 border-2 rounded rounded-xl border-gray-400"
   >
     <div>
@@ -50,7 +50,7 @@ export default {
     components: {
         Skeleton,
     },
-    emits: ["country"],
+    emits: ["country", "city"],
     data() {
         return {
             result: {
@@ -79,11 +79,12 @@ export default {
             this.result = {};
             this.http.get("https://randomuser.me/api?gender=male")
             .then( (response) => {
-                console.log(response)
                 this.result = response.data.results[0];
+                this.$emit("country", response.data.results[0].location.country)
+                this.$emit("city", response.data.results[0].location.city)
             })
             .catch( (error) => console.log(error))
         }
-    }
+    },
 }
 </script>

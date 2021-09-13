@@ -1,6 +1,6 @@
 <template>
   <div 
-    style="height:300px;"
+    style="height:280px;"
     class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50 border-2 rounded rounded-xl border-gray-400"
   >
     <div>
@@ -27,7 +27,7 @@
           {{ weather.main.temp }} 
           <sup> o </sup>C
         </div>
-        <p>Gambar awan</p>
+        <p>Gambar awan  {{ myProp }}</p>
         <p> {{ weather.weather[0].description }}</p>
       </div>
 
@@ -48,6 +48,12 @@ export default {
     components: {
         Skeleton,
     },
+    props: {
+      cityUser: {
+        type: String,
+        default: "",
+      }
+    },
     data() {
         return {
             weather: {
@@ -57,9 +63,16 @@ export default {
               weather: [
                 { description: "" }
               ]},
-
-            city: "",
+              city: "",
         }
+    },
+    watch: {
+      // Watch props change
+      cityUser: function (newVal) {
+        console.log(newVal)
+        this.getWeather(newVal)
+        this.city = newVal
+      }
     },
     methods: {
         getWeather(city) {
