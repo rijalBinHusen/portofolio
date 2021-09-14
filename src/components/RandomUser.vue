@@ -5,12 +5,15 @@
   >
     <div>
       <div v-if="result.gender">
-        <span class="absolute">
+        <span :class="[result.name.first ? 'text-xl absolute' : 'text-9xl']">
           <font-awesome-icon
-            class="text-xl cursor-pointer"
+            class="cursor-pointer"
             icon="sync"
             @click="getUser"
           />
+          <p v-if="!result.name.first" class="text-3xl inline">
+            Get random users
+            </p>
         </span>
         <div class="grid justify-items-center">
           <img
@@ -54,12 +57,12 @@ export default {
     data() {
         return {
             result: {
-                gender: "no data",
+                gender: "n",
                 picture: {
                     large: "",
                     },
                 name: {
-                    title: "No data, click sync icon",
+                    title: "",
                     first: "",
                     last: "",
                 },

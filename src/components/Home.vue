@@ -72,7 +72,7 @@
           @country="changeCountry($event)"
           @city="changeCity($event)"
         />
-        <City :country="country" />
+        <City :country-user="country" />
         <Weather :city-user="city" />
       </div>
       <!-- End of activity -->

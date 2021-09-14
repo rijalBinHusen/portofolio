@@ -11,10 +11,10 @@
         <input
           class="border inline md:text-xl pl-2 rounded bg-white bg-opacity-50"
           type="text"
-          name="city"
-          :value="city"
+          name="country"
+          :value="country"
           placeholder="Type a country"
-          @change="getCity($event.target.value)"
+          @change="getcountry($event.target.value)"
         >
       </div>
 
@@ -57,6 +57,12 @@ export default {
     components: {
         Skeleton,
     },
+    props: {
+      countryUser: {
+        type: String,
+        default: "",
+      }
+    },
     data() {
         return {
             result: {
@@ -68,13 +74,20 @@ export default {
               population: "",
               area: ""
             },
-            city: "",
+            country: "",
         }
     },
+    watch: {
+      countryUser: function (newVal) {
+        console.log(newVal)
+        this.country = newVal
+        this.getcountry(newVal)
+      }
+    },
     methods: {
-        getCity(city) {
+        getcountry(country) {
             this.result = {};
-            this.http.get(`https://restcountries.eu/rest/v2/name/${city}?fullText=true`)
+            this.http.get(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`)
             .then( (response) => {
                 this.result = response.data[0];
             })
@@ -87,7 +100,7 @@ export default {
               population: "",
               area: ""
             })
-            this.city = city
+            this.country = country
         }
     }
 }

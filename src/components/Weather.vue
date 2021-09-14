@@ -4,7 +4,7 @@
     class="overflow-auto p-4 md:mt-0 mt-6 bg-white bg-opacity-50 border-2 rounded rounded-xl border-gray-400"
   >
     <div>
-      <div class="mb-4">
+      <div class="mb-2">
         <h1 class="text-2xl font-bold text-gray-700 inline md:mr-10 mr-2">
           Weather
         </h1>
@@ -19,16 +19,23 @@
       </div>
 
       <div v-if="weather.name">
-        <span class="block mb-4 text-xl font-bold">
+        <span class="block mb-2 text-xl font-bold">
           {{ weather.name }}
           <sup> {{ weather.sys.country }} </sup>
         </span>
-        <div class="text-lg text-6xl text-gray-700">
+        <div class="text-lg text-5xl text-gray-700">
           {{ weather.main.temp }} 
           <sup> o </sup>C
         </div>
-        <p>Gambar awan  {{ myProp }}</p>
-        <p> {{ weather.weather[0].description }}</p>
+        <div class="">
+          <span class=" absolute">
+            <img
+              :src="`http://openweathermap.org/img/wn/${ weather.weather[0].icon }@2x.png`"
+              alt="cloud"
+            >
+            <p> {{ weather.weather[0].description }}</p>
+          </span>
+        </div>
       </div>
 
       <!-- Skeleton loading -->
@@ -69,7 +76,6 @@ export default {
     watch: {
       // Watch props change
       cityUser: function (newVal) {
-        console.log(newVal)
         this.getWeather(newVal)
         this.city = newVal
       }
