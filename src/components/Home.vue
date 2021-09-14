@@ -21,7 +21,7 @@
       </nav>
 
       <!-- Section Hero  -->
-      <div class="container mx-auto mt-8 md:mt-0 md:space-x-10 md:grid grid-cols-3 justify-center md:py-40">
+      <div class="container md:mx-auto md:mt-8 mt-0 md:space-x-10 md:grid grid-cols-3 justify-center md:py-40">
         <div class="grid justify-center items-center order-1 col-span-1">
           <img
             class="lg:h-80 md:h-64 h-40 rounded-full"
@@ -73,7 +73,7 @@
       <p class="text-3xl mb-3">
         This page was build with:
       </p>
-      <div class="md:grid grid-cols-3 gap-4  px-10 items-center justify-around max-md text-3xl">
+      <div class="md:grid grid-cols-3 gap-4  px-10 items-center justify-around max-md md:text-3xl text-xl">
         <div class="mb-4">
           <font-awesome-icon :icon="['fab', 'vuejs']" /> 
           <a

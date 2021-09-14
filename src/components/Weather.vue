@@ -23,7 +23,7 @@
           {{ weather.name }}
           <sup> {{ weather.sys.country }} </sup>
         </span>
-        <div class="text-lg text-5xl text-gray-700">
+        <div class="text-lg md:text-5xl text-4xl text-gray-700">
           {{ weather.main.temp }} 
           <sup> o </sup>C
         </div>
@@ -32,8 +32,9 @@
             <img
               :src="`http://openweathermap.org/img/wn/${ weather.weather[0].icon }@2x.png`"
               alt="cloud"
+              class="md:w-full w-4/6"
             >
-            <p> {{ weather.weather[0].description }}</p>
+            {{ weather.weather[0].description }}
           </span>
         </div>
       </div>

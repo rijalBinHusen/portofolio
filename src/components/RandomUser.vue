@@ -5,7 +5,7 @@
   >
     <div>
       <div v-if="result.gender">
-        <span :class="[result.name.first ? 'text-xl absolute' : 'text-9xl text-center']">
+        <span :class="[result.name.first ? 'text-xl absolute' : 'md:text-9xl text-center text-3xl']">
           <font-awesome-icon
             class="cursor-pointer"
             icon="sync"
