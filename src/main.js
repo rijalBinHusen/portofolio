@@ -10,7 +10,10 @@ import {
     faStarHalfAlt,
     faSync,
     faPaintBrush,
-    faFileExcel
+    faFileExcel,
+    faUser,
+    faGlobeEurope,
+    faCloudRain
 } from "@fortawesome/free-solid-svg-icons";
 import { faJs, 
          faCss3,
@@ -40,7 +43,10 @@ library.add(
     faFileExcel,
     faPaintBrush,
     faFigma,
-    faPhp
+    faPhp,
+    faUser,
+    faGlobeEurope,
+    faCloudRain
 );
 
 
