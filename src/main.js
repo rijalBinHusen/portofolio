@@ -9,6 +9,8 @@ import {
     faStar,
     faStarHalfAlt,
     faSync,
+    faPaintBrush,
+    faFileExcel
 } from "@fortawesome/free-solid-svg-icons";
 import { faJs, 
          faCss3,
@@ -17,6 +19,8 @@ import { faJs,
          faNodeJs,
          faTelegramPlane,
          faGithub,
+         faFigma,
+         faPhp,
         } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -32,7 +36,11 @@ library.add(
     faNodeJs,
     faTelegramPlane,
     faGithub,
-    faSync
+    faSync,
+    faFileExcel,
+    faPaintBrush,
+    faFigma,
+    faPhp
 );
 
 

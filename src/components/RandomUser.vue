@@ -5,17 +5,23 @@
   >
     <div>
       <div v-if="result.gender">
-        <span :class="[result.name.first ? 'text-xl absolute' : 'text-9xl']">
+        <span :class="[result.name.first ? 'text-xl absolute' : 'text-9xl text-center']">
           <font-awesome-icon
             class="cursor-pointer"
             icon="sync"
             @click="getUser"
           />
-          <p v-if="!result.name.first" class="text-3xl inline">
+          <p
+            v-if="!result.name.first"
+            class="text-3xl inline"
+          >
             Get random users
-            </p>
+          </p>
         </span>
-        <div class="grid justify-items-center">
+        <div
+          v-if="result.name.first"
+          class="grid justify-items-center"
+        >
           <img
             :src="result.picture.large"
             alt="User"
