@@ -29,13 +29,15 @@
             alt=""
           >
         </div>
-        <div class="mt-8 md:mt-0 lg:justify-end col-span-2">
-          <h1 class="text-4xl text-gray-800 text-center md:text-left font-bold mb-6">
-            Hi, I am Rijal, VueJS Enthusiast
+        <div class="mt-8 md:mt-8 lg:justify-end col-span-2">
+          <h1 class="md:text-6xl text-4xl text-gray-800 text-center md:text-left font-bold mb-6">
+            Welcome <font-awesome-icon
+              icon="smile"
+              class="text-gray-500"
+            />
           </h1>
-          <p class="text-xl text-gray-800 text-center md:text-left">
-            It’s so glad to have you here, This page would tell you about me.<br>
-            So... just continue you scroll.
+          <p class="text-2xl md:w-6/6 text-gray-800 text-center md:text-left">
+            I am Rijal, a man who wants to be a Good <ins>Developer</ins>, VueJS Enthusiast, <br>and still learning many things till now.
           </p>
         </div>
       </div>
@@ -123,7 +125,7 @@
             href="https://openweathermap.org/"
             target="blank"
           >
-            Weater Api
+            Weather Api
           </a>
         </div>
       </div>

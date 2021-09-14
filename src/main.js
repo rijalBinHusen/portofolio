@@ -13,7 +13,8 @@ import {
     faFileExcel,
     faUser,
     faGlobeEurope,
-    faCloudRain
+    faCloudRain,
+    faSmile
 } from "@fortawesome/free-solid-svg-icons";
 import { faJs, 
          faCss3,
@@ -46,7 +47,8 @@ library.add(
     faPhp,
     faUser,
     faGlobeEurope,
-    faCloudRain
+    faCloudRain,
+    faSmile
 );
 
 
