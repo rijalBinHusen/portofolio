@@ -1,12 +1,26 @@
 <template>
-  <h1 @click="consol">
-    Docking
-  </h1>
+  <div class="h-full w-full grid gap-6 mt-10 justify-center">
+    <h1 class="text-center text-3xl font-bold">
+      Daftar item by docking gudang jadi
+    </h1>
+    <Datatable
+      v-if="dock.length > 1"
+      :id="'Dock'"
+      :heads="['Item', 'Nama Lengkap', 'Lokasi', 'Dock']"
+      :datanya="dock"
+      :keydata="'id'"
+      :option="[]"
+    />
+  </div>
 </template>
 
 <script>
+import Datatable from "./Datatable.vue"
     export default {
         name: "Dock",
+        components: {
+            Datatable,
+        },
         data() {
             return {
                 dock: ""
