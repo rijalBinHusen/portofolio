@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import './index.css'
+import router from "./router"
 import Axios from 'axios'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -52,7 +53,7 @@ library.add(
 );
 
 
-const app = createApp(App).component("font-awesome-icon", FontAwesomeIcon)
+const app = createApp(App).component("font-awesome-icon", FontAwesomeIcon).use(router)
 
 app.config.globalProperties.http = Axios;
 app.mount('#app')
