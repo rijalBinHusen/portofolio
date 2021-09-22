@@ -53,13 +53,12 @@
 
     <table class="text-left w-full border-collapse mt-3">
       <tr class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-        <th scope="col">
+        <th class="px-3">
           No
         </th>
         <th
           v-for="head in heads"
           :key="head"
-          scope="col"
           class=" py-2 "
           @click="
             sortDedata(head, deData.sortAsc);
@@ -93,7 +92,7 @@
         >
           <input
             type="text"
-            class="text-1xl px-5 py-1 text-black-700 bg-white bg-opacity-50 rounded focus:outline-none focus:bg-white mx-1 my-2"
+            class="text-1xl px-5 py-1 text-black-700 bg-white bg-opacity-50 rounded focus:outline-none focus:bg-white my-2"
             placeholder="Search"
             :value="[
               deData.searchKey.includes(key)
@@ -111,7 +110,9 @@
         :key="r"
         class=" border-b border-grey-light "
       >
-        <th>{{ index + deData.startRow + 1 }}</th>
+        <th class="px-3">
+          {{ index + deData.startRow + 1 }}
+        </th>
         <td
           v-for="key in heads"
           :key="r[key]"
@@ -121,7 +122,7 @@
         </td>
 
         <td v-if="option.length > 0">
-          <a
+          <!-- <a
             v-if="option.includes('edit')"
             class="w3-tag w3-teal w3-round w3-margin-right"
             @click="
@@ -146,7 +147,7 @@
             @click="$emit('detail', r[keydata])"
           >
             Detail
-          </button>
+          </button> -->
         </td>
       </tr>
     </table>
@@ -171,9 +172,8 @@
 
       <div class="flex pl-0 list-none rounded my-2">
         <a
-          href="#"
           :class="[
-            'relative bg-opacity-50 block py-2 px-3 leading-tight bg-white border-r-0 hover:bg-gray-200',
+            'relative cursor-pointer bg-opacity-50 block py-2 px-3 leading-tight bg-white border-r-0 hover:bg-gray-200',
             deData.currentPage == 0 || deData.currentPage == 1 ? 'hidden' : '',
           ]"
           @click="toThePage(deData.currentPage - 1)"
@@ -184,9 +184,8 @@
         <a
           v-for="p in totalPage"
           :key="p"
-          href="#"
           :class="[
-            'relative bg-opacity-50 block py-2 px-3 leading-tight bg-white border-r-0 hover:bg-gray-200',
+            'relative cursor-pointer bg-opacity-50 block py-2 px-3 leading-tight bg-white border-r-0 hover:bg-gray-200',
             deData.currentPage == p || (p == 1 && deData.currentPage == 0)
               ? 'bg-blue-300 text-black'
               : '',
@@ -197,9 +196,8 @@
         </a>
 
         <a
-          href="#"
           :class="[
-            'relative bg-opacity-50 block py-2 px-3 leading-tight bg-white border-r-0 hover:bg-gray-200w3-button',
+            'relative cursor-pointer bg-opacity-50 block py-2 px-3 leading-tight bg-white border-r-0 hover:bg-gray-200w3-button',
             deData.startRow + Number(deData.lengthRow) >= deData.rowLenght
               ? 'hidden'
               : '',
@@ -220,6 +218,7 @@
 <script>
 export default {
   name: "Datatable",
+  // eslint-disable-next-line vue/require-prop-types
   props: ["datanya", "heads", "option", "keydata", "icon", "id"],
   data() {
     return {

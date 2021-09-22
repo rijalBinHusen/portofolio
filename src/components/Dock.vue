@@ -11,15 +11,22 @@
       :keydata="'id'"
       :option="[]"
     />
+    <Skeleton
+      v-else
+      class="bg-white bg-opacity-50"
+      :rows="6"
+    />
   </div>
 </template>
 
 <script>
-import Datatable from "./Datatable.vue"
+import Datatable from "./Datatable.vue";
+import Skeleton from "./SkeletonLoading.vue"
     export default {
         name: "Dock",
         components: {
             Datatable,
+            Skeleton,
         },
         data() {
             return {
