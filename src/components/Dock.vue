@@ -1,6 +1,6 @@
 <template>
-  <div class="h-full w-full grid gap-6 mt-10 justify-center">
-    <h1 class="text-center text-3xl font-bold">
+  <div class="h-full w-full md:grid gap-6 mt-10 justify-center">
+    <h1 class="text-center mb-3 text-3xl font-bold">
       Daftar item by docking gudang jadi
     </h1>
     <Datatable

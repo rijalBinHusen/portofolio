@@ -51,8 +51,8 @@
 
     <!-- data Table -->
 
-    <table class="text-left w-full border-collapse mt-3">
-      <tr class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+    <table class="text-left text-xs md:text-xl border-collapse mt-3">
+      <tr class="py-4 px-6 bg-grey-lightest font-bold uppercase text-grey-dark border-b border-grey-light">
         <th class="px-3">
           No
         </th>
@@ -77,7 +77,6 @@
         </th>
         <th
           v-if="option.length > 0"
-          scope="col"
         >
           Option
         </th>
@@ -92,7 +91,7 @@
         >
           <input
             type="text"
-            class="text-1xl px-5 py-1 text-black-700 bg-white bg-opacity-50 rounded focus:outline-none focus:bg-white my-2"
+            class="text-1xl md:w-auto w-24 px-5 py-1 text-black-700 bg-white bg-opacity-50 rounded focus:outline-none focus:bg-white my-2"
             placeholder="Search"
             :value="[
               deData.searchKey.includes(key)
@@ -157,7 +156,7 @@
     <!--Pagination button and info of qty item-->
 
     <div class="mt-10">
-      <span class="w3-left">
+      <span class=" text-xs">
         <p>
           {{ deData.startRow + 1 }} -
           {{
@@ -170,7 +169,7 @@
         </p>
       </span>
 
-      <div class="flex pl-0 list-none rounded my-2">
+      <div class="flex pl-0 list-none rounded my-2 text-xs md:text-xl">
         <a
           :class="[
             'relative cursor-pointer bg-opacity-50 block py-2 px-3 leading-tight bg-white border-r-0 hover:bg-gray-200',
