@@ -3,24 +3,30 @@ import { createRouter, createWebHistory } from "vue-router";
 //importer
 import Home from "../components/Home.vue";
 import Dock from "../components/Dock.vue";
+import Kendaraan from "../components/Kendaraan.vue";
 
 //define a routes
 const routes = [
-    {
-        path: "/",
-        name: "home",
-        component: Home
-    },
-    {
-        path: "/dock",
-        name: "dock",
-        component: Dock
-    },
+  {
+    path: "/",
+    name: "home",
+    component: Home,
+  },
+  {
+    path: "/dock",
+    name: "dock",
+    component: Dock,
+  },
+  {
+    path: "/kendaraan",
+    name: "kendaraan",
+    component: Kendaraan,
+  },
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes // config routes
-})
+  history: createWebHistory(),
+  routes, // config routes
+});
 
 export default router;
