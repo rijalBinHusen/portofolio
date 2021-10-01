@@ -44,6 +44,9 @@ const paper = {
         },
         status(state) {
             return state.status;
+        },
+        paperId: (state) => (id) => {
+            return state.paper.filter((val) => val.nodo == id)
         }
     }
 }
