@@ -17,6 +17,7 @@ import {
   faGlobeEurope,
   faCloudRain,
   faSmile,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faJs,
@@ -30,8 +31,10 @@ import {
   faPhp,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
+  faTimes,
   faTrophy,
   faCode,
   faStar,

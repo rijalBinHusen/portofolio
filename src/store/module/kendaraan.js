@@ -14,7 +14,8 @@ const kendaraan = {
     kendaraan({ commit, dispatch }) {
       return new Promise((resolve) => {
         axios
-        .get("http://localhost:5000/")
+        // .get("http://localhost:5000/")
+        .get("https://unofficialapi.herokuapp.com/")
         .then((response) => {
           commit("kendaraan", response.data)
           dispatch("Paper/getAllPaper", response.data.slice(-1), { root: true })
@@ -57,6 +58,9 @@ const kendaraan = {
       })
       return result
     },
+    kendaraanId: (state) => (id) => {
+      return state.vehicles.filter((val) => val.nodo == id)[0]
+    }
   },
 };
 

@@ -5,6 +5,7 @@ const paper = {
     state: {
         paper: [],
         status: false,
+        paperList: [],
     },
     mutations: {
         paper(state, value) {
@@ -12,24 +13,32 @@ const paper = {
         },
         status(state, value) {
             state.status = value
+        },
+        paperList(state, value) {
+            state.paperList.push(value)
         }
     },
     actions: {
-        getAllPaper( {commit}, value) {
+        getAllPaper( {commit, state}, value) {
             commit("status", false)
             value[0].forEach((val, index) => {
-                if(val) {
-                axios.get(`http://localhost:5000/dodetails/${val}`)
+                if(state.paperList.indexOf(val) < 0 && val) {
+                // axios.get(`http://localhost:5000/dodetails/${val}`)
+                axios.get(`https://unofficialapi.herokuapp.com/dodetails/${val}`)
                     .then((response) => {
+                        commit("paperList", val)
                         commit("paper", response.data)
+                        if(index + 1 == value[0].length) commit("status", true)
                     })
                     .catch((error) => {
                         console.log(error)
                     })
                 }
-                if(index + 1 == value[0].length) {
+                else if (
+                    index + 1 == value[0].length && state.paperList.indexOf(val) > 0
+                ) {
                     commit("status", true)
-                }
+                } 
             })
         }
     },
@@ -46,7 +55,9 @@ const paper = {
             return state.status;
         },
         paperId: (state) => (id) => {
-            return state.paper.filter((val) => val.nodo == id)
+            return typeof id == 'object' 
+            ? state.paper.filter((val) => val.nodo == id.id && val.location == id.gdg)
+            : state.paper.filter((val) => val.nodo == id)
         }
     }
 }

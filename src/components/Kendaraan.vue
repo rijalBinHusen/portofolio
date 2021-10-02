@@ -66,26 +66,26 @@
                         <!-- End of queue -->
 
                         <!-- Outstand -->
-                        <div class="block border-2 mt-2 border-opacity-50 rounded-lg">
+                        <div v-if="status" class="block border-2 mt-2 border-opacity-50 rounded-lg">
                             <!-- Label -->
                             <span
                                 @click="child = 'outstand'"
                                 class="block mt-2 py-3 m-2 bg-white bg-opacity-30"
                             >Outstand: {{ outstand(gdg).length }}</span>
-                            <!-- Label -->
+                            <!-- End of Label -->
                             <!-- LIST OF VEHICLES -->
                             <transition name="trans">
                                 <div v-if="show == gdg && child == 'outstand'">
-                                    <div v-for="veh in oustandVeh(outstand(gdg))">
+                                    <div v-for="veh in oustandVeh(outstand(gdg))" :key="veh.nodo">
                                         <span
-                                            @click="getPaper(veh[0].nodo)"
+                                            @click="getPaper(veh.nodo, gdg)"
                                             class="block border-2 py-3 m-2 hover:bg-blue-100"
+                                            v-if="veh.nodo"
                                         >
-                                            {{ veh[0].nopol + ' - ' + veh[0].type + ' @' + veh[0].position }}
+                                            {{ veh.nopol + ' - ' + veh.type + ' @' + (veh.position || veh.location) }}
                                             <!-- {{ veh }} -->
                                         </span>
                                     </div>
-                                    <!-- <span v-for="n in kendaraan[gdg]">{{ n.nopol }}</span> -->
                                 </div>
                             </transition>
                             <!-- END OF LIST VEHICLES -->
@@ -99,6 +99,14 @@
         <transition name="trans">
             <Modal v-if="modal" :paper="paper" @close="modal = false" />
         </transition>
+        <div
+            :class="['text-white fixed bottom-0 right-0 border-2 m-2 hover:bg-blue-100 rounded-lg p-3 bg-opacity-50 bg-black', !status ? 'animate-pulse' : '']"
+        >
+            <span v-if="!status">Mendapatkan data</span>
+            <span @click="getData" v-else>
+                <font-awesome-icon class="cursor-pointer" icon="sync" />
+            </span>
+        </div>
     </div>
 </template>
 
@@ -118,7 +126,8 @@ export default {
             child: false,
             kendaraan: {},
             paper: {},
-            gudang: ["GJJB", "GJBC", "GJDP", "GJST", "GJCC", "GJH3"]
+            gudang: ["GJJB", "GJBC", "GJDP", "GJST", "GJCC", "GJH3"],
+            status: false
         }
     },
     methods: {
@@ -132,6 +141,7 @@ export default {
         outstand(gdg) {
             let status = this.$store.getters["Paper/status"]
             if (status) {
+                this.status = true
                 let allPaper = this.$store.getters["Paper/allPaper"](gdg)
                 let inPosition = this.queue(gdg).concat(this.progress(gdg))
                 let inPositionArr = inPosition.map((val) => val.nodo)
@@ -158,17 +168,27 @@ export default {
             return this.kendaraan.filter((val) => val.position == gdg && val.flag == 1)
         },
         kendaraanId(id) {
-            return this.kendaraan.filter((val) => val.nodo == id)
+            let result = this.kendaraan.filter((val) => val.nodo == id)
+            if (result.length > 0) return result[0]
+            else return this.$store.getters["Kendaraan/kendaraanId"](id)
         },
-        getPaper(id) {
+        getPaper(id, gdg) {
             this.modal = true
-            this.paper = this.$store.getters["Paper/paperId"](id)
+            if (gdg) this.paper = this.$store.getters["Paper/paperId"]({ id: id, gdg: gdg })
+            else this.paper = this.$store.getters["Paper/paperId"](id)
+        },
+        getData() {
+            this.status = false
+            this.show = false
+            this.child = false
+            this.kendaraan = {}
+            this.$store.dispatch("Kendaraan/kendaraan").then(() => {
+                this.kendaraan = this.$store.getters["Kendaraan/kendaraan"]
+            })
         }
     },
     mounted() {
-        this.$store.dispatch("Kendaraan/kendaraan").then(() => {
-            this.kendaraan = this.$store.getters["Kendaraan/kendaraan"]
-        })
+        this.getData()
     },
     computed: {
 
