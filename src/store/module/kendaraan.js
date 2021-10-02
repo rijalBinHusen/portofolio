@@ -58,9 +58,11 @@ const kendaraan = {
       })
       return result
     },
-    kendaraanId: (state) => (id) => {
-      return state.vehicles.filter((val) => val.nodo == id)[0]
-    }
+    // kendaraanId: (state) => (id) => {
+    //   let result = state.vehicles.filter((val) => val.nodo == id)[0]
+    //   console.log(JSON.stringify(result))
+    //   if(result.length > 0) return result[0]
+    // }
   },
 };
 

@@ -23,7 +23,7 @@
                     <tbody>
                         <tr v-for="pap in paper">
                             <td class="border-2 p-2">{{ pap.no }}</td>
-                            <td class="border-2 p-2">{{ pap.item }}</td>
+                            <td class="border-2 p-2">{{ pap.item.replace(/\(/gi, " ( ") }}</td>
                             <td class="border-2 p-2">{{ pap.qty }}</td>
                             <td class="border-2 p-2">{{ pap.location }}</td>
                         </tr>

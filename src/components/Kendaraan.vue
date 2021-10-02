@@ -18,7 +18,7 @@
                             Queue:
                             <b>{{ queue(gdg).length }}</b>
                         </span>
-                        <span class="mr-2">Outsand: {{ outstand(gdg).length }}</span>
+                        <span class="mr-2">Outstand: {{ outstand(gdg).length }}</span>
                     </span>
                 </div>
                 <transition name="trans">
@@ -76,14 +76,13 @@
                             <!-- LIST OF VEHICLES -->
                             <transition name="trans">
                                 <div v-if="show == gdg && child == 'outstand'">
-                                    <div v-for="veh in oustandVeh(outstand(gdg))" :key="veh.nodo">
+                                    <div v-for="vehic in outstandVehicles[gdg]">
                                         <span
-                                            @click="getPaper(veh.nodo, gdg)"
+                                            @click="getPaper(vehic.nodo, gdg)"
                                             class="block border-2 py-3 m-2 hover:bg-blue-100"
-                                            v-if="veh.nodo"
                                         >
-                                            {{ veh.nopol + ' - ' + veh.type + ' @' + (veh.position || veh.location) }}
-                                            <!-- {{ veh }} -->
+                                            {{ vehic.nopol + ' - ' + vehic.type + ' @' + (vehic.position || vehic.location) }}
+                                            <!-- {{ vehic }} -->
                                         </span>
                                     </div>
                                 </div>
@@ -124,10 +123,11 @@ export default {
             modal: false,
             show: false,
             child: false,
-            kendaraan: {},
+            kendaraan: [],
             paper: {},
             gudang: ["GJJB", "GJBC", "GJDP", "GJST", "GJCC", "GJH3"],
-            status: false
+            outstandList: [],
+            outstandVehicles: {},
         }
     },
     methods: {
@@ -139,25 +139,24 @@ export default {
         },
         // Vehicles outstand
         outstand(gdg) {
-            let status = this.$store.getters["Paper/status"]
-            if (status) {
-                this.status = true
-                let allPaper = this.$store.getters["Paper/allPaper"](gdg)
-                let inPosition = this.queue(gdg).concat(this.progress(gdg))
-                let inPositionArr = inPosition.map((val) => val.nodo)
-                return allPaper.filter((val) => inPositionArr.indexOf(val) < 0)
-            }
-            return "..."
+            let allPaper = this.$store.getters["Paper/allPaper"](gdg)
+            let inPosition = this.kendaraan.filter((val) => val.position == gdg)
+            let inPositionArr = inPosition.map((val) => val.nodo)
+            let result = allPaper.filter((val) => inPositionArr.indexOf(val) < 0)
+            this.oustandVeh(result, gdg)
+            return result
         },
         // Vehicle outstand
-        oustandVeh(arr) {
+        oustandVeh(arr, gdg) {
             let result = []
             arr.forEach((val) => {
-                result.push(
-                    this.kendaraanId(val)
-                )
+                if (val) {
+                    result.push(
+                        this.kendaraanId(val)
+                    )
+                }
             })
-            return result
+            this.outstandVehicles[gdg] = result
         },
         // Vehicle progress
         progress(gdg) {
@@ -168,9 +167,7 @@ export default {
             return this.kendaraan.filter((val) => val.position == gdg && val.flag == 1)
         },
         kendaraanId(id) {
-            let result = this.kendaraan.filter((val) => val.nodo == id)
-            if (result.length > 0) return result[0]
-            else return this.$store.getters["Kendaraan/kendaraanId"](id)
+            return this.kendaraan.filter((val) => val.nodo == id)[0]
         },
         getPaper(id, gdg) {
             this.modal = true
@@ -178,20 +175,25 @@ export default {
             else this.paper = this.$store.getters["Paper/paperId"](id)
         },
         getData() {
-            this.status = false
             this.show = false
             this.child = false
-            this.kendaraan = {}
+            this.kendaraan = []
+            this.$store.dispatch("Paper/status", false)
             this.$store.dispatch("Kendaraan/kendaraan").then(() => {
                 this.kendaraan = this.$store.getters["Kendaraan/kendaraan"]
             })
+        },
+        filtUndefined(arr) {
+            return arr.filter((val) => Boolean(val))
         }
     },
     mounted() {
         this.getData()
     },
     computed: {
-
+        status() {
+            return this.$store.getters["Paper/status"]
+        }
     },
 }
 </script>

@@ -21,25 +21,33 @@ const paper = {
     actions: {
         getAllPaper( {commit, state}, value) {
             commit("status", false)
+            let promiseAll = []
             value[0].forEach((val, index) => {
                 if(state.paperList.indexOf(val) < 0 && val) {
                 // axios.get(`http://localhost:5000/dodetails/${val}`)
-                axios.get(`https://unofficialapi.herokuapp.com/dodetails/${val}`)
-                    .then((response) => {
-                        commit("paperList", val)
-                        commit("paper", response.data)
-                        if(index + 1 == value[0].length) commit("status", true)
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
+                    promiseAll.push(
+                        new Promise ((resolve) => {
+                            axios.get(`https://unofficialapi.herokuapp.com/dodetails/${val}`)
+                                .then((response) => resolve(response.data)
+                                )
+                                .catch((error) => {
+                                    console.log(error)
+                                })
+                        })
+                    )
                 }
-                else if (
-                    index + 1 == value[0].length && state.paperList.indexOf(val) > 0
-                ) {
-                    commit("status", true)
-                } 
             })
+
+            Promise.all(promiseAll).then((val) => {
+                val.forEach((result) => {
+                    commit("paper", result)
+                    commit("paperList", result[0].nodo)
+                })
+                commit("status", true)
+            })
+        },
+        status( {commit}, value) {
+            commit("status", value)
         }
     },
     getters: {
