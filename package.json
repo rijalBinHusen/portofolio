@@ -13,10 +13,9 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/vue-fontawesome": "^3.0.0-4",
     "axios": "^0.21.2",
-    "locomotive-scroll": "^4.1.1",
     "vue": "^3.2.6",
-    "vuex": "^4.0.0-0",
-    "vue-router": "^4.0.11"
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
