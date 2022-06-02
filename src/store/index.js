@@ -1,13 +1,8 @@
-import { createStore } from "vuex";
-import Kendaraan from "./module/kendaraan"
-import Paper from "./module/paper"
+import { createStore } from "vuex"
 
 export default createStore({
   state: {},
   mutations: {},
   actions: {},
-  modules: {
-    Kendaraan,
-    Paper,
-  },
+  modules: {},
 });
