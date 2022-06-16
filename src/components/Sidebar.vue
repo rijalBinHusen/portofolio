@@ -1,6 +1,6 @@
 <template>
 <div class="rounded rounded-xl md:flex flex-col md:flex-row md:min-h-screen w-full">
-  <div class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 bg-opacity-50 flex-shrink-0 lg:rounded-r-2xl">
+  <div class="sidebar flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 bg-opacity-50 flex-shrink-0 lg:rounded-r-2xl">
     <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
       <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Rijal Bin Husen</a>
       
@@ -56,9 +56,6 @@ export default {
             this.open = true
       },
     },
-    updated() {
-      console.log(this.open)
-    },
     created() {
       // add event listener to window on resize
       window.addEventListener("resize", this.checkScreen);
@@ -67,3 +64,10 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+  .sidebar {
+    background: rgb(255, 255, 255);
+    /* background: linear-gradient(121deg, rgb(153, 225, 239) 0%, rgba(140,226,255,1) 39%, rgb(162, 208, 255) 100%);  */ 
+  }
+</style>
