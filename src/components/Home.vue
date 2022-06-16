@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="md:flex">
     <Sidebar />
+    <skill class="w-full" />
   </div>
 </template>
 <script>
