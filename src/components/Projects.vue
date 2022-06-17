@@ -18,7 +18,21 @@
 </template>
 
 <script>
-	export default {
-		name: "projects"
-	}
+
+export default {
+    name: "Projects",
+    components: {},
+    data() {
+        return {}
+    },
+    mounted() {
+        // /github
+        this.$store.dispatch("getGithub")
+        // this.http.get("https://api.github.com/users/rijalBinHusen/events")
+        // .then( (response) => this.github = response.data )
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
+    },
+}
 </script>

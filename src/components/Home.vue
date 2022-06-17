@@ -39,8 +39,5 @@ export default {
         this.city = city
       }
     },
-    updated() {
-      console.log(this.$route.params.page)
-    },
 }
 </script>
