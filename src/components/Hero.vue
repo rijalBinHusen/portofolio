@@ -1,8 +1,8 @@
 <template>
 
 
-	  <div class="break-words container md:mx-48 mt-32 mx-4 w-11/12">
-      <h1 class="text-5xl">Hello there! Im</h1>
+	  <div class="break-words container lg:mx-48 mt-32 mx-4 w-11/12">
+      <h1 class="text-5xl mb-2">Hello there! Im</h1>
       <p class="font-bold mb-2 text-3xl">Rijal bin Husen</p>
       <p class="mb-3">I love everything about innovation, especially innovations that benefit a lot of people.</p>
       <p>That's why I love coding, because a combination of several codes can create awesome applications, and awesome applications can be benefit for many people.</p>

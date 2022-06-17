@@ -1,11 +1,12 @@
 <template>
   <div class="md:flex">
     <Sidebar />
-    <skill class="w-full" />
+    <Hero />
   </div>
 </template>
 <script>
 import Sidebar from "./Sidebar.vue"
+import Hero from "./Hero.vue"
 import Github from "./Github.vue";
 import Weather from "./Weather.vue";
 import City from "./City.vue";
@@ -15,6 +16,7 @@ import Skill from "./Skill.vue"
 export default {
     components: {
       Sidebar,
+      Hero,
       Github,
       Weather,
       City,

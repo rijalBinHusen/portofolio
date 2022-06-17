@@ -35,10 +35,11 @@ export default {
     data() {
       return {
         links: [
-          { id: 1, judul: "Portofolio"},
-          { id: 2, judul: "Blog"},
-          { id: 3, judul: "Contact"},
-          { id: 4, judul: "About"},
+          { id: 1, judul: "Projects"},
+          { id: 2, judul: "Blogs"},
+          { id: 3, judul: "Timeline & projects"},
+          { id: 4, judul: "Connect"},
+          { id: 5, judul: "About"},
         ],
         active: 0,
         mobileView: false,
