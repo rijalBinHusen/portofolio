@@ -1,6 +1,6 @@
 <template>
 <!-- <div class="rounded rounded-xl md:flex flex-col md:flex-row md:min-h-screen w-full"> -->
-  <div class="md:min-h-screen sidebar fixed md:relative flex top-0 flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 bg-opacity-50 flex-shrink-0 md:rounded-r-lg rounded-b-lg mr-6">
+  <div class="md:min-h-screen sidebar md:relative flex top-0 flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 bg-opacity-50 flex-shrink-0 md:rounded-r-lg rounded-b-lg mr-6">
     <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
       <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Rijal Bin Husen</a>
       
@@ -17,7 +17,7 @@
 
     <!-- In mobile view hide it, but can toggle active or not -->
     <nav v-if="open" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
-      <router-link :to="{ name: 'page', params: { page: link?.name } }" v-for="link in links" :key="link.id" :class="['cursor-pointer block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline', active === link.id ? 'bg-gray-200' : '' ]" @click="active = link.id">
+      <router-link  :to="{ name: 'page', params: { page: link?.name } }" v-for="link in links" :key="link.id" :class="['cursor-pointer block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline', active === link.id ? 'bg-gray-200' : '' ]" @click="active = link.id; open = false">
         {{ link.judul }}
       </router-link> 
 

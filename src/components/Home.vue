@@ -7,6 +7,7 @@
 <script>
 import Sidebar from "./Sidebar.vue"
 import Hero from "./Hero.vue"
+import Projects from "./Projects.vue"
 import Github from "./Github.vue";
 import Weather from "./Weather.vue";
 import City from "./City.vue";
@@ -17,6 +18,7 @@ export default {
     components: {
       Sidebar,
       about: Hero,
+      projects: Projects,
       Github,
       Weather,
       City,
