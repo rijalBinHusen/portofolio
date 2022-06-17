@@ -6,12 +6,7 @@ import Home from './components/Home.vue'
 </script>
 
 <template>
-  <!-- <Activity /> -->
   <router-view />
-  <!-- <img
-    alt="Vue logo"
-    src="./assets/logo.png"
-  > -->
 </template>
 
 <style>
