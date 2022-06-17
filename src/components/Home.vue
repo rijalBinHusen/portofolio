@@ -1,7 +1,7 @@
 <template>
   <div class="md:flex">
     <Sidebar />
-    <Hero />
+    <component :is="$route.params.page ? $route.params.page : 'about'"></component>
   </div>
 </template>
 <script>
@@ -16,7 +16,7 @@ import Skill from "./Skill.vue"
 export default {
     components: {
       Sidebar,
-      Hero,
+      about: Hero,
       Github,
       Weather,
       City,
@@ -36,6 +36,9 @@ export default {
       changeCity(city) {
         this.city = city
       }
-    }
+    },
+    updated() {
+      console.log(this.$route.params.page)
+    },
 }
 </script>

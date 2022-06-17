@@ -6,33 +6,13 @@ import Home from "../components/Home.vue";
 //define a routes
 const routes = [
   {
+    path: "/:page",
+    name: "page",
+    component: Home,
+  },
+  {
     path: "/",
     name: "home",
-    component: Home,
-  },
-  {
-    path: "/projects",
-    name: "projects",
-    component: Home,
-  },
-  {
-    path: "/blogs",
-    name: "blogs",
-    component: Home,
-  },
-  {
-    path: "/connect",
-    name: "connect",
-    component: Home,
-  },
-  {
-    path: "/timeline",
-    name: "timeline",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "about",
     component: Home,
   },
 ];
