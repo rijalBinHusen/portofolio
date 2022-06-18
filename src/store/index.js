@@ -26,7 +26,8 @@ export default createStore({
     gitRepos(state) {
       if(state?.gitRepos?.length) {
         return state?.gitRepos.map((val) => ({ 
-          reposName: val?.name
+          reposName: val?.name,
+          description: val?.description
         })
         )
       }
