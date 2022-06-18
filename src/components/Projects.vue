@@ -1,6 +1,7 @@
 <template>
 <div class="text-center mt-10">
-    <div v-for="repo in repos" :key="repo" class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-2/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+    <!-- Card repos -->
+    <div v-if="repos.length" v-for="repo in repos" :key="repo" class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-2/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
         <!-- service block -->
         <div class="rounded-lg py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
             <h3 class="text-lg leading-normal mb-2 font-semibold text-black">{{ repo?.reposName }}</h3>
@@ -8,14 +9,29 @@
         </div>
         <!-- end service block -->
     </div>
-   </div>
+    <!-- End of card repos -->
+
+    <!-- Skeleton loading -->
+    <div v-else class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-2/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+        <div class="rounded-lg py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+            <Skeleton :rows="2" />
+            
+        </div>
+
+    </div>
+    <!-- End of skeleton loading -->
+</div>
 </template>
 
 <script>
 
+import Skeleton from "./SkeletonLoading.vue"
+
 export default {
     name: "Projects",
-    components: {},
+    components: {
+        Skeleton
+    },
     data() {
         return {
             repos: []
@@ -25,6 +41,7 @@ export default {
         // /github
         await this.$store.dispatch("getGithub")
         this.repos = this.$store.getters["gitRepos"]
+        console.log(this.$store.state.gitRepos)
         // this.http.get("https://api.github.com/users/rijalBinHusen/events")
         // .then( (response) => this.github = response.data )
         // .catch(function (error) {
