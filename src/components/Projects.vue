@@ -12,10 +12,9 @@
     <!-- End of card repos -->
 
     <!-- Skeleton loading -->
-    <div v-else class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-2/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-        <div class="rounded-lg py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-            <Skeleton :rows="2" />
-            
+    <div v-else v-for="num in [ ...Array(12).keys() ]" :key="num" class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+        <div class="rounded-lg lg:w-80 py-8 px-6 mt-5 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+            <Skeleton :rows="1" />
         </div>
 
     </div>
@@ -40,7 +39,9 @@ export default {
     async mounted() {
         // /github
         await this.$store.dispatch("getGithub")
-        this.repos = this.$store.getters["gitRepos"]
+        setTimeout(() => {
+            this.repos = this.$store.getters["gitRepos"]
+        }, 1500)
         console.log(this.$store.state.gitRepos)
         // this.http.get("https://api.github.com/users/rijalBinHusen/events")
         // .then( (response) => this.github = response.data )
