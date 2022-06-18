@@ -6,6 +6,7 @@
         <div class="rounded-lg py-8 px-12 mt-5 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2 w-full">
             <h3 class="text-lg leading-normal mb-2 font-semibold text-black">{{ repo?.reposName }}</h3>
             <p class="text-gray-500 ">{{ repo?.description }}</p>
+            <p class="text-gray-500 ">{{ $store.getters["repoLanguages"](repo?.reposName) }}</p>
         </div>
         <!-- end service block -->
     </div>
@@ -37,12 +38,16 @@ export default {
         }
     },
     async mounted() {
-        // /github
+        // / get all github repository
         await this.$store.dispatch("getGithub")
+        // then get languages that contain in the each repository
+        // await this.$store.dispatch("getRepositoryLanguages")
+        // after 1,5 second, Get the repository from the state
         setTimeout(() => {
             this.repos = this.$store.getters["gitRepos"]
+            console.log(this.$store.state.gitRepos)
+            // console.log(this.$store.state.repoLanguages)
         }, 1500)
-        console.log(this.$store.state.gitRepos)
         // this.http.get("https://api.github.com/users/rijalBinHusen/events")
         // .then( (response) => this.github = response.data )
         // .catch(function (error) {
