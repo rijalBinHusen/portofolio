@@ -1,20 +1,32 @@
 import { createStore } from "vuex"
+import axios from "axios"
 
 export default createStore({
   state: {},
   mutations: {
-    renewData(state, payload) {
-      state[payload?.stateName] = payload?.data
+    renewState(state, payload) {
+      if(payload?.state === "gitRepos") {
+        state[payload?.state] = payload?.data.sort(function(a, b){ return a?.id - b?.id });
+      }
     }
   },
   actions: {
-    getGithub() {
-      console.log("Get github")
-      http.get("https://api.github.com/users/rijalBinHusen/events")
-        .then( (response) => commit("renewData", { stateName: "gitRepos", data: response.data } ) )
+    getGithub({ commit }) {
+      return axios.get("https://api.github.com/users/rijalBinHusen/repos")
+        .then( (response) => commit("renewState", { state: "gitRepos", data: response.data }) )
         .catch(function (error) {
             console.log(error);
         });
+    }
+  },
+  getters: {
+    gitRepos(state) {
+      if(state?.gitRepos?.length) {
+        return state?.gitRepos.map((val) => ({ 
+          reposName: val?.name
+        })
+        )
+      }
     }
   },
   modules: {},
