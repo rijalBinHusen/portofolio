@@ -1,5 +1,5 @@
 <template>
-  <div class="md:flex">
+  <div class="md:flex overflow-hidden md:max-h-screen">
     <Sidebar />
     <component :is="$route.params.page ? $route.params.page : 'about'"></component>
   </div>

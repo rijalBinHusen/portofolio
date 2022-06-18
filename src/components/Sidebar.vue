@@ -1,6 +1,6 @@
 <template>
 <!-- <div class="rounded rounded-xl md:flex flex-col md:flex-row md:min-h-screen w-full"> -->
-  <div class="md:min-h-screen sidebar md:relative flex top-0 flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 bg-opacity-50 flex-shrink-0 md:rounded-r-lg rounded-b-lg mr-6">
+  <div class="md:max-h-screen sidebar md:relative flex top-0 flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 bg-opacity-50 flex-shrink-0 md:rounded-r-lg rounded-b-lg mr-6">
     <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
       <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Rijal Bin Husen</a>
       

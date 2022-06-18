@@ -1,9 +1,9 @@
 <template>
-<div class="text-center mt-10">
+<div class="flex flex-wrap flex-row text-center overflow-auto">
     <!-- Card repos -->
-    <div v-if="repos.length" v-for="repo in repos" :key="repo" class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-2/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+    <div v-if="repos.length" v-for="repo in repos" :key="repo" class="flex-shrink px-4 sm:w-1/2 md:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
         <!-- service block -->
-        <div class="rounded-lg py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+        <div class="rounded-lg py-8 px-12 mt-5 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
             <h3 class="text-lg leading-normal mb-2 font-semibold text-black">{{ repo?.reposName }}</h3>
             <p class="text-gray-500">This is a wider card with supporting text below as a natural content.</p>
         </div>
