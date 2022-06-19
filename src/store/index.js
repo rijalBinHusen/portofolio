@@ -49,11 +49,13 @@ export default createStore({
   getters: {
     gitRepos(state) {
       if (state?.gitRepos?.length) {
-        return state?.gitRepos.map((val) => ({
-          reposName: val?.name,
-          description: val?.description,
-          language: val?.language,
-        }));
+        return state?.gitRepos;
+        // .map((val) => ({
+        //   reposName: val?.name,
+        //   description: val?.description,
+        //   language: val?.language,
+        //   created: val?.created_at,
+        // }));
       }
     },
     fontAwesomeBrand: () => (nameBrand) => {
