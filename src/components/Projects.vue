@@ -1,12 +1,17 @@
 <template>
-<div class="flex flex-wrap flex-row text-center overflow-auto">
+<div class="flex flex-wrap flex-row overflow-auto">
     <!-- Card repos -->
     <div v-if="repos.length" v-for="repo in repos" :key="repo" class="flex-shrink px-4 w-screen md:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
         <!-- service block -->
         <div class="rounded-lg py-8 px-9 mt-5 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2 w-full">
             <h3 class="text-lg leading-normal mb-2 font-semibold text-black">{{ repo?.reposName }}</h3>
             <p class="mb-3">Description: <span class="text-gray-500 ">{{ repo?.description }}</span></p>
-            <p>Primary languages: <span class="text-gray-500 ">{{ repo?.language }}</span></p>
+            <p>Primary languages: 
+                <font-awesome-icon :class="repo?.language ? $store.getters['fontAwesomeBrandColor'](repo?.language) : repo?.language" :icon="repo?.language ? $store.getters['fontAwesomeBrand'](repo?.language) : repo?.language" />
+                <span class="text-gray-500 ml-1 ">
+                    {{ repo?.language }}
+                </span>
+            </p>
         </div>
         <!-- end service block -->
     </div>

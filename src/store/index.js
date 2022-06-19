@@ -56,6 +56,26 @@ export default createStore({
         }));
       }
     },
+    fontAwesomeBrand: () => (nameBrand) => {
+      if (nameBrand.toLowerCase() === "javascript") {
+        return ["fab", "js"];
+      } else if (nameBrand.toLowerCase() === "vue") {
+        return ["fab", "vuejs"];
+      } else if (nameBrand.toLowerCase() === "html") {
+        return ["fab", "html5"];
+      } else if (nameBrand.toLowerCase() === "css") {
+        return ["fab", "css3"];
+      }
+      return "code";
+    },
+    fontAwesomeBrandColor: () => (nameBrand) => {
+      if (nameBrand.toLowerCase() === "javascript") {
+        return "text-yellow-600";
+      } else if (nameBrand.toLowerCase() === "vue") {
+        return "text-green-500";
+      }
+      return "text-blue-600";
+    },
     repoLanguages: (state) => (repo) => {
       // expected result = [ { javascript: "30%", vue: "60%", html: "5%", css: "5%"} ]
       // let result = "Please wait...";
