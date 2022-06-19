@@ -20,35 +20,28 @@ export default createStore({
     },
   },
   actions: {
-    getRepositoryLanguages({ state, commit }, payload) {
-      if (state?.gitRepos) {
-        return state?.gitRepos.forEach((val) => {
-          axios
-            .get(
-              `https://api.github.com/repos/rijalBinHusen/${val?.name}/languages`
-            )
-            .then((response) => {
-              commit("appendState", {
-                state: "repoLanguages",
-                data: { repo: val.name, languages: response.data },
-              });
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        });
-      }
+    async getRepositoryLanguages({ state, commit }, payload) {
+      // payload === nameRepository
+      let result = await axios.get(
+        `https://api.github.com/repos/rijalBinHusen/${payload}/languages`
+      );
+      commit("appendState", {
+        state: "repoLanguages",
+        data: { repo: payload, languages: result?.data },
+      });
+      return "Finished";
     },
-    getGithub({ commit, state }) {
+    async getGithub({ commit, state, dispatch }) {
       if (!state?.gitRepos) {
-        return axios
-          .get("https://api.github.com/users/rijalBinHusen/repos")
-          .then((response) => {
-            commit("renewState", { state: "gitRepos", data: response.data });
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        let repos = await axios.get(
+          "https://api.github.com/users/rijalBinHusen/repos"
+        );
+        commit("renewState", { state: "gitRepos", data: repos.data });
+
+        // iterate the repos to get each language of respository
+        // for (let i = 0; i < repos?.data.length; i++) {
+        //   await dispatch("getRepositoryLanguages", repos?.data[i]?.name);
+        // }
       }
       return 1;
     },
@@ -59,12 +52,13 @@ export default createStore({
         return state?.gitRepos.map((val) => ({
           reposName: val?.name,
           description: val?.description,
+          language: val?.language,
         }));
       }
     },
     repoLanguages: (state) => (repo) => {
       // expected result = [ { javascript: "30%", vue: "60%", html: "5%", css: "5%"} ]
-      let result = "Please wait...";
+      // let result = "Please wait...";
       // if (state?.repoLanguages?.length) {
       //   result = {};
       //   // find the repo
