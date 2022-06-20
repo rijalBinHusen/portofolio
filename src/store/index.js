@@ -8,7 +8,16 @@ export default createStore({
       // payload = { state: "gitRepos", data: response.data }
       if (payload?.state === "gitRepos") {
         state[payload?.state] = payload?.data.sort(function (a, b) {
-          return b?.id - a?.id;
+          // return a?.pushed_at - b?.pushed_at;
+          let x = a.pushed_at;
+          let y = b.pushed_at;
+          if (x < y) {
+            return 1;
+          }
+          if (x > y) {
+            return -1;
+          }
+          return 0;
         });
       }
     },

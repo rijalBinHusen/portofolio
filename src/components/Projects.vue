@@ -9,14 +9,15 @@
                 <font-awesome-icon :icon="['fab', 'github']" /> 
             </h3>
             <p class="mb-3">Description: <span class="text-gray-500 ">{{ repo?.description || "No description" }}</span></p>
-            <p> Created: 
-                <span class="text-gray-500">{{ new Date(repo?.created_at).toLocaleString() }} </span>
+            <p class="text-sm"> Last update: 
+                <span class="text-gray-500">{{ new Date(repo?.pushed_at).toLocaleString() }} </span>
             </p>
-            <p>Primary languages: 
-                <font-awesome-icon :class="$store.getters['fontAwesomeBrandColor'](repo?.language ? repo?.language : 'false')" :icon="$store.getters['fontAwesomeBrand'](repo?.language ? repo?.language : 'false')" />
-                <span class="text-gray-500 ml-1 ">
-                    {{ repo?.language || "Unknown"  }}
-                </span>
+            <p ><span class="text-sm">Languages: </span>
+                <font-awesome-icon 
+                    v-for="lang in repo?.topics" :key="lang" 
+                    :class="$store.getters['fontAwesomeBrandColor'](lang ? lang : 'false')+ ' ml-1 text-lg'" 
+                    :icon="$store.getters['fontAwesomeBrand'](lang ? lang : 'false')" 
+                />
             </p>
         </div>
         <!-- end service block -->
