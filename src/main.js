@@ -30,11 +30,13 @@ import {
   faFigma,
   faPhp,
   faHtml5,
+  faReact,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
+  faReact,
   faHtml5,
   faTimes,
   faTrophy,

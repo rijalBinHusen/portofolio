@@ -76,13 +76,22 @@ export default createStore({
         return ["fab", "html5"];
       } else if (nameBrand.toLowerCase() === "css") {
         return ["fab", "css3"];
+      } else if (nameBrand.toLowerCase() === "nodejs") {
+        return ["fab", "node-js"];
+      } else if (nameBrand.toLowerCase() === "react") {
+        return ["fab", "react"];
+      } else if (nameBrand.toLowerCase() === "bootstrap") {
+        return ["fab", "bootstrap"];
       }
       return "code";
     },
     fontAwesomeBrandColor: () => (nameBrand) => {
       if (nameBrand.toLowerCase() === "javascript") {
         return "text-yellow-600";
-      } else if (nameBrand.toLowerCase() === "vue") {
+      } else if (
+        nameBrand.toLowerCase() === "vue" ||
+        nameBrand.toLowerCase() === "nodejs"
+      ) {
         return "text-green-500";
       }
       return "text-blue-600";

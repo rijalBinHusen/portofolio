@@ -6,6 +6,7 @@
 </template>
 <script>
 import Sidebar from "./Sidebar.vue"
+import Blogs from "./Blogs.vue"
 import Hero from "./Hero.vue"
 import Projects from "./Projects.vue"
 import Github from "./Github.vue";
@@ -16,6 +17,7 @@ import Skill from "./Skill.vue"
 
 export default {
     components: {
+      blogs: Blogs,
       Sidebar,
       about: Hero,
       projects: Projects,
